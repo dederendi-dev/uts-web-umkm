@@ -1,0 +1,126 @@
+/* src/components/Navbar/Navbar.css */
+
+/* Reset dasar */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Navbar utama */
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 15px 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  
+  /* Glass effect */
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(10px);
+
+  transition: all 0.3s ease;
+  z-index: 1000;
+}
+
+/* Efek saat scroll */
+.navbar-scrolled {
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  background: rgba(255, 255, 255, 0.9);
+}
+
+/* Logo */
+.navbar-logo h2 {
+  font-weight: bold;
+  color: #222;
+}
+
+/* Menu */
+.navbar-links {
+  display: flex;
+  list-style: none;
+  gap: 30px;
+}
+
+/* Link style */
+.navbar-links li a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  position: relative;
+}
+
+/* Hover underline animasi */
+.navbar-links li a::after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  bottom: -5px;
+  left: 0;
+  background: #007bff;
+  transition: 0.3s;
+}
+
+.navbar-links li a:hover::after {
+  width: 100%;
+}
+
+/* CTA Button */
+.navbar-cta button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 25px;
+  background: linear-gradient(45deg, #007bff, #00c6ff);
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.navbar-cta button:hover {
+  transform: scale(1.05);
+}
+
+/* Hamburger */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.hamburger span {
+  width: 25px;
+  height: 3px;
+  background: #333;
+  margin: 4px 0;
+  transition: 0.3s;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  
+  .navbar-links {
+    position: absolute;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    flex-direction: column;
+    background: white;
+    align-items: center;
+    display: none;
+  }
+
+  .navbar-links.active {
+    display: flex;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  .navbar-cta {
+    display: none;
+  }
+}
