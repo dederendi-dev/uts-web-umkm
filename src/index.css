@@ -52,7 +52,6 @@
 
 body {
   margin: 0;
-  padding-top: 80px; /* Fix supaya konten tidak ketiban navbar fixed */
 }
 
 #root {

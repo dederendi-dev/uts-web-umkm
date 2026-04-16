@@ -1,9 +1,13 @@
 .hero {
-  min-height: 100vh;
+  /* Kurangi tinggi agar tidak ketiban navbar (yang fixed 80px) */
+  min-height: calc(100vh - 80px);
+
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 100px 80px;
+
+  /* Tambah jarak atas biar konten turun dari navbar */
+  padding: 120px 80px 100px;
   gap: 40px;
 }
 
@@ -16,6 +20,10 @@
   font-size: 48px;
   font-weight: 700;
   color: #222;
+
+  /* FIX utama biar teks gak numpuk / kepotong */
+  line-height: 1.2;
+  margin-bottom: 20px;
 }
 
 .hero-left h1 span {
