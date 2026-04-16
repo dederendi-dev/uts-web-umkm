@@ -1,34 +1,61 @@
-// components/Hero/Hero.jsx
+import { useEffect, useState } from 'react'
+import { supabase } from '../../supabase'
+import './Hero.css'
 
-import "./Hero.css";
-import heroImage from "../../assets/hero.png";
+function Hero() {
+  const [homeData, setHomeData] = useState(null)
 
-const Hero = () => {
+  useEffect(() => {
+    fetchHomeData()
+  }, [])
+
+  const fetchHomeData = async () => {
+    const { data, error } = await supabase
+      .from('home')
+      .select('*')
+      .single()
+
+    if (error) {
+      console.error('Error fetch home:', error.message)
+      return
+    }
+
+    setHomeData(data)
+  }
+
+  if (!homeData) {
+    return <section id="home"><p>Loading...</p></section>
+  }
+
   return (
-    <section className="hero" id="home">
-
-      <div className="hero-left">
+    <section id="home" className="hero">
+      <div className="hero-content">
         <h1>
-          Solusi F&B <span>Modern</span> untuk Bisnis Anda
+          {homeData.title}{' '}
+          <span>{homeData.highlight_text}</span>
         </h1>
-
-        <p>
-          CV Hasna menghadirkan produk makanan dan minuman berkualitas
-          dengan standar terbaik untuk memenuhi kebutuhan konsumen masa kini.
-        </p>
+        <p>{homeData.description}</p>
 
         <div className="hero-buttons">
-          <button className="btn-primary">Lihat Produk</button>
-          <button className="btn-secondary">Hubungi Kami</button>
+          <a href={homeData.button_primary_link}>
+            <button className="btn-primary">
+              {homeData.button_primary_text}
+            </button>
+          </a>
+
+          <a href={homeData.button_secondary_link}>
+            <button className="btn-secondary">
+              {homeData.button_secondary_text}
+            </button>
+          </a>
         </div>
       </div>
 
-      <div className="hero-right">
-        <img src={heroImage} alt="Hero" />
+      <div className="hero-image">
+        <img src={homeData.hero_image} alt="Hero" />
       </div>
-
     </section>
-  );
-};
+  )
+}
 
-export default Hero;
+export default Hero

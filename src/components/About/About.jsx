@@ -1,45 +1,47 @@
+import { useEffect, useState } from 'react'
+import { supabase } from '../../supabase'
+import './About.css'
 
+function About() {
+  const [aboutData, setAboutData] = useState(null)
 
-// About.jsx
-// Section About untuk menampilkan profil singkat CV Hasna
+  useEffect(() => {
+    fetchAboutData()
+  }, [])
 
-import "./About.css";
+  const fetchAboutData = async () => {
+    const { data, error } = await supabase
+      .from('about')
+      .select('*')
+      .single()
 
-const About = () => {
+    if (error) {
+      console.error('Error fetch about:', error.message)
+      return
+    }
+
+    setAboutData(data)
+  }
+
+  if (!aboutData) {
+    return <section id="about"><p>Loading...</p></section>
+  }
+
   return (
-    <section className="about" id="about">
-      
-      {/* LEFT - IMAGE / VISUAL */}
-      <div className="about-left">
-        <div className="about-image"></div>
+    <section id="about" className="about">
+      <div className="about-image">
+        <img src={aboutData.image_url} alt={aboutData.company_name} />
       </div>
 
-      {/* RIGHT - CONTENT */}
-      <div className="about-right">
-        <h5 className="about-subtitle">Tentang Kami</h5>
-
-        <h2 className="about-title">
-          CV Hasna sebagai Penyedia Produk F&amp;B Berkualitas
-        </h2>
-
-        <p className="about-desc">
-          CV Hasna merupakan perusahaan yang bergerak di bidang makanan dan minuman
-          (F&amp;B) yang berkomitmen untuk menghadirkan produk berkualitas tinggi,
-          higienis, dan sesuai dengan kebutuhan pasar modern.
-        </p>
-
-        <p className="about-desc">
-          Dengan pengalaman dan inovasi yang terus berkembang, kami berupaya
-          memberikan solusi terbaik bagi konsumen serta mendukung pertumbuhan
-          bisnis kuliner di Indonesia.
-        </p>
-
-        {/* BUTTON */}
-        <button className="about-btn">Pelajari Lebih Lanjut</button>
+      <div className="about-content">
+        <h2>{aboutData.headline}</h2>
+        <h3>{aboutData.company_name}</h3>
+        <p>{aboutData.description}</p>
+        <p><strong>Visi:</strong> {aboutData.vision}</p>
+        <p><strong>Misi:</strong> {aboutData.mission}</p>
       </div>
-
     </section>
-  );
-};
+  )
+}
 
-export default About;
+export default About

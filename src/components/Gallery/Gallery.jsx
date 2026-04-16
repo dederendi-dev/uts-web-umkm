@@ -1,45 +1,43 @@
+import { useEffect, useState } from 'react'
+import { supabase } from '../../supabase'
+import './Gallery.css'
 
+function Gallery() {
+  const [gallery, setGallery] = useState([])
 
-// Gallery.jsx
-// Section Gallery untuk menampilkan foto produk / aktivitas CV Hasna
+  useEffect(() => {
+    fetchGallery()
+  }, [])
 
-import "./Gallery.css";
+  const fetchGallery = async () => {
+    const { data, error } = await supabase
+      .from('gallery')
+      .select('*')
+      .order('id', { ascending: true })
 
-// Dummy data gambar (nanti bisa diganti real image dari assets)
-const images = [
-  "https://source.unsplash.com/400x300/?food",
-  "https://source.unsplash.com/400x300/?drink",
-  "https://source.unsplash.com/400x300/?restaurant",
-  "https://source.unsplash.com/400x300/?coffee",
-  "https://source.unsplash.com/400x300/?bakery",
-  "https://source.unsplash.com/400x300/?dessert",
-];
+    if (error) {
+      console.error('Error fetch gallery:', error.message)
+      return
+    }
 
-const Gallery = () => {
+    setGallery(data)
+  }
+
   return (
-    <section className="gallery" id="gallery">
+    <section id="gallery" className="gallery">
+      <h2>Gallery</h2>
 
-      {/* HEADER */}
-      <div className="gallery-header">
-        <h5>Gallery</h5>
-        <h2>Dokumentasi Produk & Aktivitas</h2>
-        <p>
-          Berikut adalah beberapa dokumentasi produk dan aktivitas dari CV Hasna
-          dalam menghadirkan kualitas terbaik.
-        </p>
-      </div>
-
-      {/* GRID IMAGE */}
-      <div className="gallery-grid">
-        {images.map((img, index) => (
-          <div className="gallery-item" key={index}>
-            <img src={img} alt={`gallery-${index}`} />
+      <div className="gallery-container">
+        {gallery.map((item) => (
+          <div className="gallery-card" key={item.id}>
+            <img src={item.image_url} alt={item.title} />
+            <h3>{item.title}</h3>
+            <p>{item.description}</p>
           </div>
         ))}
       </div>
-
     </section>
-  );
-};
+  )
+}
 
-export default Gallery;
+export default Gallery

@@ -1,65 +1,130 @@
+import { useEffect, useState } from 'react'
+import { supabase } from '../../supabase'
+import './Contact.css'
 
+function Contact() {
+  const [contactData, setContactData] = useState(null)
+  const [form, setForm] = useState({
+    name: '',
+    email: '',
+    subject: '',
+    message: '',
+  })
+  const [loading, setLoading] = useState(false)
 
-// Contact.jsx
-// Section Contact untuk menampilkan form dan info kontak CV Hasna
+  useEffect(() => {
+    fetchContact()
+  }, [])
 
-import "./Contact.css";
+  const fetchContact = async () => {
+    const { data, error } = await supabase
+      .from('contact')
+      .select('*')
+      .single()
 
-const Contact = () => {
+    if (error) {
+      console.error('Error fetch contact:', error.message)
+      return
+    }
+
+    setContactData(data)
+  }
+
+  const handleChange = (e) => {
+    setForm({
+      ...form,
+      [e.target.name]: e.target.value,
+    })
+  }
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    setLoading(true)
+
+    const { error } = await supabase
+      .from('contact_messages')
+      .insert([form])
+
+    if (error) {
+      console.error('Error kirim pesan:', error.message)
+      alert('Pesan gagal dikirim')
+    } else {
+      alert('Pesan berhasil dikirim')
+      setForm({
+        name: '',
+        email: '',
+        subject: '',
+        message: '',
+      })
+    }
+
+    setLoading(false)
+  }
+
+  if (!contactData) {
+    return <section id="contact"><p>Loading...</p></section>
+  }
+
   return (
-    <section className="contact" id="contact">
-
-      {/* HEADER */}
-      <div className="contact-header">
-        <h5>Hubungi Kami</h5>
-        <h2>Kami Siap Bekerja Sama dengan Anda</h2>
-        <p>
-          Jangan ragu untuk menghubungi kami untuk informasi lebih lanjut
-          mengenai produk dan layanan CV Hasna.
-        </p>
+    <section id="contact" className="contact">
+      <div className="contact-info">
+        <h2>Contact</h2>
+        <p><strong>Alamat:</strong> {contactData.address}</p>
+        <p><strong>Telepon:</strong> {contactData.phone}</p>
+        <p><strong>Email:</strong> {contactData.email}</p>
+        <p><strong>Instagram:</strong> {contactData.instagram}</p>
+        <p><strong>WhatsApp:</strong> {contactData.whatsapp}</p>
+        <a
+          href={contactData.google_maps_link}
+          target="_blank"
+          rel="noreferrer"
+        >
+          Lihat Lokasi
+        </a>
       </div>
 
-      <div className="contact-container">
+      <form className="contact-form" onSubmit={handleSubmit}>
+        <input
+          type="text"
+          name="name"
+          placeholder="Nama"
+          value={form.name}
+          onChange={handleChange}
+          required
+        />
 
-        {/* LEFT - INFO */}
-        <div className="contact-info">
-          <h3>Informasi Kontak</h3>
+        <input
+          type="email"
+          name="email"
+          placeholder="Email"
+          value={form.email}
+          onChange={handleChange}
+          required
+        />
 
-          <p><strong>Alamat:</strong> Jl. Contoh No.123, Indonesia</p>
-          <p><strong>Email:</strong> cvhasna@email.com</p>
-          <p><strong>Telepon:</strong> +62 812-3456-7890</p>
+        <input
+          type="text"
+          name="subject"
+          placeholder="Subjek"
+          value={form.subject}
+          onChange={handleChange}
+        />
 
-        </div>
+        <textarea
+          name="message"
+          placeholder="Pesan"
+          value={form.message}
+          onChange={handleChange}
+          required
+          rows="5"
+        />
 
-        {/* RIGHT - FORM */}
-        <form className="contact-form">
-
-          <input 
-            type="text" 
-            placeholder="Nama Lengkap" 
-            required 
-          />
-
-          <input 
-            type="email" 
-            placeholder="Email" 
-            required 
-          />
-
-          <textarea 
-            placeholder="Pesan Anda" 
-            rows="5" 
-            required
-          ></textarea>
-
-          <button type="submit">Kirim Pesan</button>
-
-        </form>
-
-      </div>
-
+        <button type="submit" disabled={loading}>
+          {loading ? 'Mengirim...' : 'Kirim Pesan'}
+        </button>
+      </form>
     </section>
-  );
-};
+  )
+}
 
-export default Contact;
+export default Contact
