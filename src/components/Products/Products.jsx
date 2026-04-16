@@ -25,19 +25,28 @@ function Products() {
 
   return (
     <section id="products" className="products">
-      <h2>Produk Kami</h2>
-
       <div className="products-container">
-        {products.map((item) => (
-          <div className="product-card" key={item.id}>
-            <img src={item.image_url} alt={item.name} />
-            <h3>{item.name}</h3>
-            <p><strong>Kategori:</strong> {item.category}</p>
-            <p>{item.description}</p>
-            <p><strong>Harga:</strong> Rp {Number(item.price).toLocaleString('id-ID')}</p>
-            <p><strong>Stok:</strong> {item.stock}</p>
-          </div>
-        ))}
+        <h2>Produk Kami</h2>
+
+        <div className="products-grid">
+          {products.map((item) => (
+            <div className="product-card" key={item.id}>
+              
+              <div className="product-image">
+                <img src={item.image_url} alt={item.name} />
+              </div>
+
+              <div className="product-content">
+                <h3>{item.name}</h3>
+                <p><strong>Kategori:</strong> {item.category}</p>
+                <p>{item.description}</p>
+                <p><strong>Harga:</strong> Rp {Number(item.price).toLocaleString('id-ID')}</p>
+                <p><strong>Stok:</strong> {item.stock}</p>
+              </div>
+
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   )

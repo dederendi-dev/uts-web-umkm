@@ -4,8 +4,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
 
 .contact {
-  padding: 100px 80px;
+  width: 100%;
+  padding: 100px 20px;
   background: #f9f9f9;
+  box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
 }
 
@@ -36,13 +38,20 @@
 
 /* CONTAINER */
 .contact-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+
   display: flex;
-  gap: 50px;
+  gap: 40px;
+  flex-wrap: wrap;
 }
 
 /* LEFT - INFO */
 .contact-info {
   flex: 1;
+  min-width: 300px;
+
   background: white;
   padding: 30px;
   border-radius: 20px;
@@ -63,6 +72,8 @@
 /* RIGHT - FORM */
 .contact-form {
   flex: 1;
+  min-width: 300px;
+
   display: flex;
   flex-direction: column;
   gap: 15px;
@@ -115,7 +126,7 @@
 /* RESPONSIVE */
 @media (max-width: 992px) {
   .contact {
-    padding: 80px 40px;
+    padding: 80px 20px;
   }
 
   .contact-container {

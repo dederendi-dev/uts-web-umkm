@@ -25,16 +25,28 @@ function Gallery() {
 
   return (
     <section id="gallery" className="gallery">
-      <h2>Gallery</h2>
-
       <div className="gallery-container">
-        {gallery.map((item) => (
-          <div className="gallery-card" key={item.id}>
-            <img src={item.image_url} alt={item.title} />
-            <h3>{item.title}</h3>
-            <p>{item.description}</p>
-          </div>
-        ))}
+        <h2>Gallery</h2>
+
+        <div className="gallery-grid">
+          {gallery.map((item) => (
+            <div className="gallery-item" key={item.id}>
+              
+              <div className="gallery-image">
+                <img
+                  src={item.image_url || 'https://via.placeholder.com/400x300?text=No+Image'}
+                  alt={item.title}
+                />
+              </div>
+
+              <div className="gallery-content">
+                <h3>{item.title}</h3>
+                <p>{item.description}</p>
+              </div>
+
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   )
