@@ -1,39 +1,32 @@
-// src/components/Navbar/Navbar.jsx
+// Navbar.jsx
 
 import React, { useState, useEffect } from "react";
 import "./Navbar.css";
 import { navLinks } from "./navData";
 
-// Navbar utama
 const Navbar = () => {
-  // State untuk toggle menu mobile
   const [menuOpen, setMenuOpen] = useState(false);
-
-  // State untuk efek scroll (shadow + blur)
   const [scrolled, setScrolled] = useState(false);
 
-  // Event scroll listener
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
+      setScrolled(window.scrollY > 20);
     };
 
     window.addEventListener("scroll", handleScroll);
-
-    // cleanup biar gak memory leak
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
-    <nav className={`navbar ${scrolled ? "navbar-scrolled" : ""}`}>
+    <nav className={`navbar ${scrolled ? "scrolled" : ""}`}>
       
-      {/* Logo */}
-      <div className="navbar-logo">
-        <h2>CV Hasna</h2>
+      {/* LEFT - LOGO */}
+      <div className="logo">
+        <span className="logo-highlight">CV</span> Hasna
       </div>
 
-      {/* Menu Desktop */}
-      <ul className={`navbar-links ${menuOpen ? "active" : ""}`}>
+      {/* CENTER - MENU */}
+      <ul className={`nav-links ${menuOpen ? "active" : ""}`}>
         {navLinks.map((link) => (
           <li key={link.id}>
             <a href={link.path}>{link.name}</a>
@@ -41,21 +34,20 @@ const Navbar = () => {
         ))}
       </ul>
 
-      {/* CTA Button */}
-      <div className="navbar-cta">
+      {/* RIGHT - CTA */}
+      <div className="cta">
         <button>Order Now</button>
       </div>
 
-      {/* Hamburger Menu (Mobile) */}
-      <div 
-        className={`hamburger ${menuOpen ? "open" : ""}`} 
+      {/* MOBILE */}
+      <div
+        className={`hamburger ${menuOpen ? "open" : ""}`}
         onClick={() => setMenuOpen(!menuOpen)}
       >
         <span></span>
         <span></span>
         <span></span>
       </div>
-
     </nav>
   );
 };
