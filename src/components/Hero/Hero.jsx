@@ -24,16 +24,20 @@ function Hero() {
   }
 
   if (!homeData) {
-    return <section id="home"><p>Loading...</p></section>
+    return (
+      <section id="home" className="hero">
+        <p>Loading...</p>
+      </section>
+    )
   }
 
   return (
     <section id="home" className="hero">
-      <div className="hero-content">
+      <div className="hero-left">
         <h1>
-          {homeData.title}{' '}
-          <span>{homeData.highlight_text}</span>
+          {homeData.title} <span>{homeData.highlight_text}</span>
         </h1>
+
         <p>{homeData.description}</p>
 
         <div className="hero-buttons">
@@ -51,7 +55,7 @@ function Hero() {
         </div>
       </div>
 
-      <div className="hero-image">
+      <div className="hero-right">
         <img src={homeData.hero_image} alt="Hero" />
       </div>
     </section>

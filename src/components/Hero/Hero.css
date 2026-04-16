@@ -1,27 +1,24 @@
 .hero {
-  /* Kurangi tinggi agar tidak ketiban navbar (yang fixed 80px) */
   min-height: calc(100vh - 80px);
-
   display: flex;
   align-items: center;
   justify-content: space-between;
-
-  /* Tambah jarak atas biar konten turun dari navbar */
   padding: 120px 80px 100px;
   gap: 40px;
+  box-sizing: border-box;
+  flex-wrap: wrap;
 }
 
 /* LEFT */
 .hero-left {
   flex: 1;
+  min-width: 300px;
 }
 
 .hero-left h1 {
   font-size: 48px;
   font-weight: 700;
   color: #222;
-
-  /* FIX utama biar teks gak numpuk / kepotong */
   line-height: 1.2;
   margin-bottom: 20px;
 }
@@ -35,6 +32,7 @@
   font-size: 16px;
   color: #555;
   line-height: 1.6;
+  max-width: 600px;
 }
 
 /* BUTTON */
@@ -42,6 +40,7 @@
   margin-top: 30px;
   display: flex;
   gap: 15px;
+  flex-wrap: wrap;
 }
 
 .btn-primary {
@@ -56,15 +55,27 @@
 .btn-secondary {
   background: transparent;
   border: 2px solid #ff7a00;
+  color: #ff7a00;
   padding: 12px 25px;
   border-radius: 25px;
   cursor: pointer;
 }
 
 /* RIGHT */
+.hero-right {
+  flex: 1;
+  min-width: 300px;
+  display: flex;
+  justify-content: center;
+}
+
 .hero-right img {
-  width: 450px;
-  max-width: 100%;
+  width: 100%;
+  max-width: 450px;
+  height: auto;
+  object-fit: cover;
+  display: block;
+  border-radius: 20px;
 }
 
 /* RESPONSIVE */
@@ -75,7 +86,20 @@
     padding: 120px 20px;
   }
 
+  .hero-left h1 {
+    font-size: 36px;
+  }
+
+  .hero-left p {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero-buttons {
+    justify-content: center;
+  }
+
   .hero-right img {
-    width: 300px;
+    max-width: 300px;
   }
 }
