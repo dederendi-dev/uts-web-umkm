@@ -13,13 +13,22 @@ body {
   padding: 18px 60px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
 
   background: rgba(255,255,255,0.5);
   backdrop-filter: blur(12px);
 
   transition: all 0.3s ease;
   z-index: 999;
+}
+
+/* CONTAINER BIAR NGIKUT LAYOUT */
+.navbar-container {
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 /* Saat scroll */
