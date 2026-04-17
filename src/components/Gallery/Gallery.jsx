@@ -4,10 +4,18 @@ import './Gallery.css'
 
 function Gallery() {
   const [gallery, setGallery] = useState([])
+  const [isExpanded, setIsExpanded] = useState(false)
+  const [width, setWidth] = useState(window.innerWidth)
 
   useEffect(() => {
     fetchGallery()
+    const handleResize = () => setWidth(window.innerWidth)
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
   }, [])
+
+  const defaultCount = width <= 576 ? 1 : 3
+  const visibleCount = isExpanded ? Math.max(gallery.length, 4) : defaultCount
 
   const fetchGallery = async () => {
     const { data, error } = await supabase
@@ -29,7 +37,7 @@ function Gallery() {
         <h2>Gallery</h2>
 
         <div className="gallery-grid">
-          {gallery.map((item) => (
+          {gallery.slice(0, visibleCount).map((item) => (
             <div className="gallery-item" key={item.id}>
               
               <div className="gallery-image">
@@ -46,6 +54,24 @@ function Gallery() {
 
             </div>
           ))}
+        </div>
+
+        <div className="gallery-more">
+          {!isExpanded ? (
+            <button
+              className="btn-more"
+              onClick={() => setIsExpanded(true)}
+            >
+              Lihat Selengkapnya
+            </button>
+          ) : (
+            <button
+              className="btn-more"
+              onClick={() => setIsExpanded(false)}
+            >
+              Tutup
+            </button>
+          )}
         </div>
       </div>
     </section>
