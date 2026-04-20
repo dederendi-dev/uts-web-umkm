@@ -53,9 +53,12 @@ function ProductPage() {
             >
               <div className="featured-product-image">
                 <img
-                  src={item.image}
-                  alt={item.name}
-                />
+  src={item.image_url}
+  alt={item.name}
+  onError={(e) => {
+    e.target.src = "https://via.placeholder.com/600x400?text=No+Image";
+  }}
+/>
               </div>
 
               <div className="featured-product-content">
