@@ -53,7 +53,7 @@ function ProductPage() {
             >
               <div className="featured-product-image">
                 <img
-                  src={item.image}
+                  src={item.image_url}
                   alt={item.name}
                 />
               </div>
