@@ -40,8 +40,12 @@ function Navbar() {
       </ul>
 
       <div className="cta">
-        <a href="#contact">
-          <button>Hubungi Kami</button>
+        <a
+          href="https://javacafe.id"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <button>Pesan Sekarang</button>
         </a>
       </div>
 

@@ -4,13 +4,6 @@ import './Contact.css'
 
 function Contact() {
   const [contactData, setContactData] = useState(null)
-  const [form, setForm] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: '',
-  })
-  const [loading, setLoading] = useState(false)
 
   useEffect(() => {
     fetchContact()
@@ -30,99 +23,52 @@ function Contact() {
     setContactData(data)
   }
 
-  const handleChange = (e) => {
-    setForm({
-      ...form,
-      [e.target.name]: e.target.value,
-    })
-  }
-
-  const handleSubmit = async (e) => {
-    e.preventDefault()
-    setLoading(true)
-
-    const { error } = await supabase
-      .from('contact_messages')
-      .insert([form])
-
-    if (error) {
-      console.error('Error kirim pesan:', error.message)
-      alert('Pesan gagal dikirim')
-    } else {
-      alert('Pesan berhasil dikirim')
-      setForm({
-        name: '',
-        email: '',
-        subject: '',
-        message: '',
-      })
-    }
-
-    setLoading(false)
-  }
-
   if (!contactData) {
     return <section id="contact"><p>Loading...</p></section>
   }
 
   return (
     <section id="contact" className="contact">
-      <div className="contact-info">
-        <h2>Contact</h2>
-        <p><strong>Alamat:</strong> {contactData.address}</p>
-        <p><strong>Telepon:</strong> {contactData.phone}</p>
-        <p><strong>Email:</strong> {contactData.email}</p>
-        <p><strong>Instagram:</strong> {contactData.instagram}</p>
-        <p><strong>WhatsApp:</strong> {contactData.whatsapp}</p>
-        <a
-          href={contactData.google_maps_link}
-          target="_blank"
-          rel="noreferrer"
-        >
-          Lihat Lokasi
-        </a>
+      <div className="contact-top">
+        <div className="contact-intro">
+          <h2>Contact Us</h2>
+          <p>
+            We’re here to answer your questions, discuss new
+            opportunities, and help you find the right solution for your
+            needs. Reach out to our team anytime.
+          </p>
+        </div>
+
+        <div className="contact-box small-box">
+          <h3>Email Us</h3>
+          <p>{contactData.email}</p>
+        </div>
+
+        <div className="contact-box small-box">
+          <h3>Call Us</h3>
+          <p>{contactData.phone}</p>
+        </div>
       </div>
 
-      <form className="contact-form" onSubmit={handleSubmit}>
-        <input
-          type="text"
-          name="name"
-          placeholder="Nama"
-          value={form.name}
-          onChange={handleChange}
-          required
-        />
+      <div className="contact-bottom">
+        <div className="contact-box address-box">
+          <h3>Our Address</h3>
+          <p>{contactData.address}</p>
+        </div>
 
-        <input
-          type="email"
-          name="email"
-          placeholder="Email"
-          value={form.email}
-          onChange={handleChange}
-          required
-        />
-
-        <input
-          type="text"
-          name="subject"
-          placeholder="Subjek"
-          value={form.subject}
-          onChange={handleChange}
-        />
-
-        <textarea
-          name="message"
-          placeholder="Pesan"
-          value={form.message}
-          onChange={handleChange}
-          required
-          rows="5"
-        />
-
-        <button type="submit" disabled={loading}>
-          {loading ? 'Mengirim...' : 'Kirim Pesan'}
-        </button>
-      </form>
+        <div className="contact-box map-box">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d992412.9427068017!2d107.76799829775777!3d-7.11508323655934!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e6ff765a68b4d61%3A0x9b98714874f8fee4!2sCV.%20Hazna%20Berkah%20Indonesia!5e1!3m2!1sid!2sid!4v1776670752558!5m2!1sid!2sid"
+            width="100%"
+            height="320"
+            style={{ border: 0, borderRadius: '20px' }}
+            allowFullScreen=""
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            title="Google Maps"
+          ></iframe>
+        </div>
+      </div>
     </section>
   )
 }

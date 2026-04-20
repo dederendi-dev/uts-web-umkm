@@ -2,6 +2,7 @@
 // Section Footer untuk bagian bawah website (informasi + navigasi cepat)
 
 import "./Footer.css";
+import { FaInstagram, FaFacebookF, FaTiktok } from "react-icons/fa";
 
 const Footer = () => {
   return (
@@ -16,6 +17,18 @@ const Footer = () => {
             Penyedia produk makanan dan minuman berkualitas dengan standar terbaik
             untuk memenuhi kebutuhan konsumen modern.
           </p>
+
+          <div className="footer-social">
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
+              <FaInstagram />
+            </a>
+            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
+              <FaFacebookF />
+            </a>
+            <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer">
+              <FaTiktok />
+            </a>
+          </div>
         </div>
 
         {/* NAVIGATION */}
