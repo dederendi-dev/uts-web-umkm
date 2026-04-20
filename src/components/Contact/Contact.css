@@ -6,7 +6,7 @@
 .contact {
   width: 100%;
   padding: 110px 20px;
-  background: #f8f8f8;
+  background: #fff7f7;
   box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
 }
@@ -30,7 +30,7 @@
 .contact-intro h2 {
   font-size: 52px;
   font-weight: 700;
-  color: #222;
+  color: #B31217;
   margin-bottom: 20px;
 }
 
@@ -46,7 +46,8 @@
   background: #ffffff;
   border-radius: 24px;
   padding: 35px;
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(179, 18, 23, 0.08);
+  box-shadow: 0 15px 40px rgba(179, 18, 23, 0.06);
 }
 
 .small-box {
@@ -62,7 +63,7 @@
 .address-box h3 {
   font-size: 32px;
   font-weight: 700;
-  color: #222;
+  color: #B31217;
   margin-bottom: 14px;
 }
 

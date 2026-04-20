@@ -1,3 +1,13 @@
+:root {
+  --accent: #B31217;
+  --accent-bg: rgba(179, 18, 23, 0.08);
+  --accent-border: rgba(179, 18, 23, 0.35);
+  --border: rgba(179, 18, 23, 0.12);
+  --text-h: #222;
+  --social-bg: #fff7f7;
+  --shadow: 0 10px 24px rgba(179, 18, 23, 0.12);
+}
+
 .counter {
   font-size: 16px;
   padding: 5px 10px;
