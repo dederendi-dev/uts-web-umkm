@@ -1,22 +1,29 @@
-import Navbar from "./components/Navbar/Navbar";
-import Hero from "./components/Hero/Hero";
-import About from "./components/About/About";
-import Products from "./components/Products/Products";
-import Gallery from "./components/Gallery/Gallery";
-import Contact from "./components/Contact/Contact";
-import Footer from "./components/Footer/Footer";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+import Home from "./pages/Home";
+import AdminLogin from "./pages/AdminLogin";
+import Dashboard from "./pages/Dashboard";
+import ProductManagement from "./pages/ProductManagement";
+import OrderManagement from "./pages/OrderManagement";
+import Reports from "./pages/Reports";
+import OrderForm from "./components/OrderForm/OrderForm";
 
 function App() {
   return (
-    <>
-      <Navbar />
-      <Hero />
-      <About />
-      <Products />
-      <Gallery />
-      <Contact />
-      <Footer />
-    </>
+    <BrowserRouter>
+      <Routes>
+        {/* Public */}
+        <Route path="/" element={<Home />} />
+        <Route path="/order" element={<OrderForm />} />
+        <Route path="/admin-login" element={<AdminLogin />} />
+
+        {/* Admin */}
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/manage-product" element={<ProductManagement />} />
+        <Route path="/manage-order" element={<OrderManagement />} />
+        <Route path="/reports" element={<Reports />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 

@@ -37,11 +37,13 @@ function Navbar() {
         <li><a href="#products" onClick={handleLinkClick}>Products</a></li>
         <li><a href="#gallery" onClick={handleLinkClick}>Gallery</a></li>
         <li><a href="#contact" onClick={handleLinkClick}>Contact</a></li>
+        <li><a href="/order" onClick={handleLinkClick}>Order</a></li>
+        <li><a href="/admin-login" onClick={handleLinkClick}>Admin Login</a></li>
       </ul>
 
       <div className="cta">
-        <a href="#contact">
-          <button>Hubungi Kami</button>
+        <a href="/order">
+          <button>Pesan Sekarang</button>
         </a>
       </div>
 
