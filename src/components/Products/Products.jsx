@@ -48,11 +48,12 @@ function Products() {
     <section id="products" className="products">
       <div className="products-container">
         <div className="products-header">
-          <h5>PAKET USAHA</h5>
-          <h2>Peluang Bisnis & Kemitraan</h2>
+          <h5>PAKET KEMITRAAN</h5>
+          <h2>Bangun Bisnis Kopi Bersama Javacafe</h2>
           <p>
-            Pilihan paket usaha terbaik untuk memulai bisnis kopi modern
-            bersama CV Hasna dengan sistem yang siap jalan.
+            Mulai usaha kopi kekinian dengan sistem kemitraan terpercaya,
+            dukungan operasional lengkap, dan brand yang terus berkembang
+            bersama Javacafe.
           </p>
         </div>
 
@@ -80,8 +81,6 @@ function Products() {
                     <h3>{item.name}</h3>
                     <p><strong>Paket:</strong> {item.category}</p>
                     <p>{item.description}</p>
-                    <p><strong>Investasi:</strong> Rp {Number(item.price).toLocaleString('id-ID')}</p>
-                    <p><strong>Ketersediaan:</strong> {item.stock}</p>
                   </div>
                 </div>
               ))}
