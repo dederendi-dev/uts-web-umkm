@@ -23,7 +23,7 @@
 }
 
 .products-header h5 {
-  color: #ff7a00;
+  color: #B31217;
   font-weight: 600;
   letter-spacing: 1px;
 }
@@ -179,7 +179,7 @@
   border: none;
   border-radius: 25px;
 
-  background: linear-gradient(135deg, #ff7a00, #ffb347);
+  background: linear-gradient(135deg, #B31217, #E52D27);
   color: white;
   font-weight: 500;
 
@@ -189,7 +189,7 @@
 
 .product-btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 10px 20px rgba(255, 122, 0, 0.3);
+  box-shadow: 0 10px 20px rgba(179, 18, 23, 0.30);
 }
 
 /* RESPONSIVE */

@@ -24,7 +24,7 @@
 }
 
 .gallery-header h5 {
-  color: #ff7a00;
+  color: #B31217;
   font-size: 14px;
   font-weight: 700;
   letter-spacing: 1.5px;
@@ -147,14 +147,14 @@
 .btn-more {
   display: inline-block;
   padding: 14px 34px;
-  background: linear-gradient(135deg, #ff7a00, #ffb347);
+  background: linear-gradient(135deg, #B31217, #E52D27);
   color: white;
   font-size: 16px;
   font-weight: 600;
   text-decoration: none;
   border-radius: 999px;
   transition: all 0.3s ease;
-  box-shadow: 0 10px 20px rgba(255, 122, 0, 0.2);
+  box-shadow: 0 10px 20px rgba(179, 18, 23, 0.2);
   border: none;
   cursor: pointer;
   font-family: inherit;
@@ -162,5 +162,5 @@
 
 .btn-more:hover {
   transform: translateY(-3px);
-  box-shadow: 0 15px 30px rgba(255, 122, 0, 0.4);
+  box-shadow: 0 15px 30px rgba(179, 18, 23, 0.35);
 }
