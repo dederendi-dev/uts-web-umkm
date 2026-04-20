@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { supabase } from '../../supabase'
 import './Products.css'
 
@@ -7,6 +7,9 @@ function Products() {
   const [isExpanded, setIsExpanded] = useState(false)
   const [width, setWidth] = useState(window.innerWidth)
 
+  const [currentIndex, setCurrentIndex] = useState(0)
+  const sliderRef = useRef(null)
+
   useEffect(() => {
     fetchProducts()
     const handleResize = () => setWidth(window.innerWidth)
@@ -14,8 +17,17 @@ function Products() {
     return () => window.removeEventListener('resize', handleResize)
   }, [])
 
-  const defaultCount = width <= 576 ? 1 : 3
-  const visibleCount = isExpanded ? Math.max(products.length, 4) : defaultCount
+
+  const cardsPerView = width <= 576 ? 1 : width <= 992 ? 2 : 3
+  const maxIndex = Math.max(products.length - cardsPerView, 0)
+
+  const nextSlide = () => {
+    setCurrentIndex((prev) => (prev >= maxIndex ? 0 : prev + 1))
+  }
+
+  const prevSlide = () => {
+    setCurrentIndex((prev) => (prev <= 0 ? maxIndex : prev - 1))
+  }
 
   const fetchProducts = async () => {
     const { data, error } = await supabase
@@ -34,45 +46,52 @@ function Products() {
   return (
     <section id="products" className="products">
       <div className="products-container">
-        <h2>Produk Kami</h2>
+        <div className="products-header">
+          <h5>PAKET USAHA</h5>
+          <h2>Peluang Bisnis & Kemitraan</h2>
+          <p>
+            Pilihan paket usaha terbaik untuk memulai bisnis kopi modern
+            bersama CV Hasna dengan sistem yang siap jalan.
+          </p>
+        </div>
 
-        <div className="products-grid">
-          {products.slice(0, visibleCount).map((item) => (
-            <div className="product-card" key={item.id}>
-              
-              <div className="product-image">
-                <img src={item.image_url} alt={item.name} />
-              </div>
+        <div className="products-slider-wrapper">
+          <button className="slider-btn prev" onClick={prevSlide}>
+            ←
+          </button>
 
-              <div className="product-content">
-                <h3>{item.name}</h3>
-                <p><strong>Kategori:</strong> {item.category}</p>
-                <p>{item.description}</p>
-                <p><strong>Harga:</strong> Rp {Number(item.price).toLocaleString('id-ID')}</p>
-                <p><strong>Stok:</strong> {item.stock}</p>
-              </div>
+          <div className="products-slider">
+            <div
+              className="products-grid"
+              ref={sliderRef}
+              style={{
+                transform: `translateX(-${currentIndex * (100 / cardsPerView)}%)`,
+                transition: 'transform 0.6s ease'
+              }}
+            >
+              {products.map((item) => (
+                <div className="product-card" key={item.id}>
+                  <div className="product-image">
+                    <img src={item.image_url} alt={item.name} />
+                  </div>
 
+                  <div className="product-content">
+                    <h3>{item.name}</h3>
+                    <p><strong>Paket:</strong> {item.category}</p>
+                    <p>{item.description}</p>
+                    <p><strong>Investasi:</strong> Rp {Number(item.price).toLocaleString('id-ID')}</p>
+                    <p><strong>Ketersediaan:</strong> {item.stock}</p>
+                  </div>
+                </div>
+              ))}
             </div>
-          ))}
+          </div>
+
+          <button className="slider-btn next" onClick={nextSlide}>
+            →
+          </button>
         </div>
 
-        <div className="products-more">
-          {!isExpanded ? (
-            <button
-              className="btn-more"
-              onClick={() => setIsExpanded(true)}
-            >
-              Lihat Selengkapnya
-            </button>
-          ) : (
-            <button
-              className="btn-more"
-              onClick={() => setIsExpanded(false)}
-            >
-              Tutup
-            </button>
-          )}
-        </div>
       </div>
     </section>
   )

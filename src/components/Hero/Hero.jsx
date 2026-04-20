@@ -37,6 +37,8 @@ function Hero() {
     <section id="home" className="hero">
       <div className="hero-container">
         <div className="hero-left">
+          <p className="hero-tag">☕ Bisnis Kopi Masa Kini</p>
+
           <h1>
             {homeData.title} <span>{homeData.highlight_text}</span>
           </h1>
@@ -44,15 +46,15 @@ function Hero() {
           <p>{homeData.description}</p>
 
           <div className="hero-buttons">
-            <a href={homeData.button_primary_link}>
+            <a href={homeData.button_primary_link || "#products"}>
               <button className="btn-primary">
-                {homeData.button_primary_text}
+                {homeData.button_primary_text || "Lihat Paket Usaha"}
               </button>
             </a>
 
-            <a href={homeData.button_secondary_link}>
+            <a href={homeData.button_secondary_link || "#about"}>
               <button className="btn-secondary">
-                {homeData.button_secondary_text}
+                {homeData.button_secondary_text || "Pelajari Lebih Lanjut"}
               </button>
             </a>
           </div>

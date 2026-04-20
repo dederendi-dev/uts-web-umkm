@@ -6,7 +6,7 @@
 .footer {
   background: #111;
   color: #fff;
-  padding: 60px 80px 20px;
+  padding: 80px 80px 24px;
   font-family: 'Poppins', sans-serif;
 }
 
@@ -20,7 +20,8 @@
 
 /* BRAND */
 .footer-brand h2 {
-  font-size: 22px;
+  font-size: 28px;
+  font-weight: 700;
 }
 
 .footer-brand h2 span {
@@ -30,8 +31,8 @@
 .footer-brand p {
   color: #ccc;
   margin-top: 10px;
-  max-width: 300px;
-  line-height: 1.6;
+  max-width: 380px;
+  line-height: 1.8;
 }
 
 /* SOCIAL ICONS */
@@ -64,6 +65,8 @@
 /* LINKS */
 .footer-links h4 {
   margin-bottom: 10px;
+  font-size: 18px;
+  font-weight: 600;
 }
 
 .footer-links ul {
@@ -72,13 +75,14 @@
 }
 
 .footer-links li {
-  margin-bottom: 8px;
+  margin-bottom: 12px;
 }
 
 .footer-links a {
   color: #ccc;
   text-decoration: none;
   transition: 0.3s;
+  font-size: 15px;
 }
 
 .footer-links a:hover {
@@ -88,18 +92,21 @@
 /* CONTACT */
 .footer-contact h4 {
   margin-bottom: 10px;
+  font-size: 18px;
+  font-weight: 600;
 }
 
 .footer-contact p {
   color: #ccc;
   margin-bottom: 8px;
+  line-height: 1.7;
 }
 
 /* BOTTOM */
 .footer-bottom {
   text-align: center;
   border-top: 1px solid #333;
-  padding-top: 15px;
+  padding-top: 20px;
   font-size: 14px;
   color: #aaa;
 }
@@ -107,7 +114,7 @@
 /* RESPONSIVE */
 @media (max-width: 768px) {
   .footer {
-    padding: 40px 20px;
+    padding: 60px 20px 24px;
   }
 
   .footer-container {

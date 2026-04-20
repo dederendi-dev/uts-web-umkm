@@ -34,7 +34,14 @@ function Gallery() {
   return (
     <section id="gallery" className="gallery">
       <div className="gallery-container">
-        <h2>Gallery</h2>
+        <div className="gallery-header">
+          <h5>OUTLET & BUKTI BISNIS</h5>
+          <h2>Gallery Outlet & Aktivitas Usaha</h2>
+          <p>
+            Dokumentasi outlet, aktivitas operasional, dan bukti nyata
+            perkembangan bisnis bersama CV Hasna dalam membangun usaha kopi modern.
+          </p>
+        </div>
 
         <div className="gallery-grid">
           {gallery.slice(0, visibleCount).map((item) => (
@@ -62,7 +69,7 @@ function Gallery() {
               className="btn-more"
               onClick={() => setIsExpanded(true)}
             >
-              Lihat Selengkapnya
+              Lihat Gallery Lainnya
             </button>
           ) : (
             <button

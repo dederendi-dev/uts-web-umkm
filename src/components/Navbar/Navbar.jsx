@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { NavLink, Link } from "react-router-dom";
 import "./Navbar.css";
 
 function Navbar() {
@@ -27,16 +28,36 @@ function Navbar() {
 
   return (
     <nav className={`navbar ${isScrolled ? "scrolled" : ""}`}>
-      <div className="logo">
+      <Link to="/" className="logo" onClick={handleLinkClick}>
         <span className="logo-highlight">CV</span> Hasna
-      </div>
+      </Link>
 
       <ul className={`nav-links ${menuActive ? "active" : ""}`}>
-        <li><a href="#home" onClick={handleLinkClick}>Home</a></li>
-        <li><a href="#about" onClick={handleLinkClick}>About</a></li>
-        <li><a href="#products" onClick={handleLinkClick}>Products</a></li>
-        <li><a href="#gallery" onClick={handleLinkClick}>Gallery</a></li>
-        <li><a href="#contact" onClick={handleLinkClick}>Contact</a></li>
+        <li>
+          <NavLink to="/" onClick={handleLinkClick}>
+            Home
+          </NavLink>
+        </li>
+        <li>
+          <NavLink to="/about" onClick={handleLinkClick}>
+            About
+          </NavLink>
+        </li>
+        <li>
+          <NavLink to="/products" onClick={handleLinkClick}>
+            Products
+          </NavLink>
+        </li>
+        <li>
+          <NavLink to="/gallery" onClick={handleLinkClick}>
+            Gallery
+          </NavLink>
+        </li>
+        <li>
+          <NavLink to="/contact" onClick={handleLinkClick}>
+            Contact
+          </NavLink>
+        </li>
       </ul>
 
       <div className="cta">

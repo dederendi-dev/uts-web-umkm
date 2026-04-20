@@ -29,6 +29,7 @@
   font-size: 20px;
   font-weight: 600;
   color: #222;
+  text-decoration: none;
 }
 
 .logo-highlight {
@@ -47,7 +48,8 @@
   color: #333;
   font-weight: 500;
   position: relative;
-  padding: 5px 0;
+  padding: 6px 0;
+  transition: all 0.35s ease;
 }
 
 /* underline hover */
@@ -56,15 +58,21 @@
   position: absolute;
   left: 0;
   bottom: -6px;
-  width: 0%;
+  width: 0;
   height: 3px;
   border-radius: 10px;
   background: linear-gradient(90deg, #ff7a00, #ffb347);
-  transition: 0.3s;
+  transition: width 0.35s ease;
 }
 
-.nav-links li a:hover::after {
+.nav-links li a:hover::after,
+.nav-links li a.active::after {
   width: 100%;
+}
+
+.nav-links li a.active {
+  color: #111;
+  font-weight: 600;
 }
 
 /* CTA */

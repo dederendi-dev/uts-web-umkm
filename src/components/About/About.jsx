@@ -29,16 +29,39 @@ function About() {
 
   return (
     <section id="about" className="about">
-      <div className="about-image">
-        <img src={aboutData.image_url} alt={aboutData.company_name} />
-      </div>
+      <div className="about-container">
+        <div className="about-left">
+          <div className="about-image">
+            <img
+              src={aboutData.image_url}
+              alt={aboutData.company_name}
+            />
+          </div>
+        </div>
 
-      <div className="about-content">
-        <h2>{aboutData.headline}</h2>
-        <h3>{aboutData.company_name}</h3>
-        <p>{aboutData.description}</p>
-        <p><strong>Visi:</strong> {aboutData.vision}</p>
-        <p><strong>Misi:</strong> {aboutData.mission}</p>
+        <div className="about-right">
+          <span className="about-subtitle">Tentang Kami</span>
+
+          <h2 className="about-title">
+            {aboutData.headline || "Bangun Bisnis Kopi Modern Bersama Kami"}
+          </h2>
+
+          <p className="about-desc">
+            {aboutData.description}
+          </p>
+
+          <p className="about-desc">
+            <strong>Visi:</strong> {aboutData.vision}
+          </p>
+
+          <p className="about-desc">
+            <strong>Misi:</strong> {aboutData.mission}
+          </p>
+
+          <button className="about-btn">
+            Pelajari Lebih Lanjut
+          </button>
+        </div>
       </div>
     </section>
   )
