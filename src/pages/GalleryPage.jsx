@@ -1,7 +1,25 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { supabase } from "../supabase";
 import "./GalleryPage.css";
 
 function GalleryPage() {
+  const [galleryItems, setGalleryItems] = useState([]);
+
+  useEffect(() => {
+    fetchGallery();
+  }, []);
+
+  const fetchGallery = async () => {
+    const { data, error } = await supabase
+      .from("gallery")
+      .select("*")
+      .order("created_at", { ascending: false });
+
+    if (!error && data) {
+      setGalleryItems(data);
+    }
+  };
+
   return (
     <div>
       {/* HERO GALLERY */}
@@ -45,33 +63,14 @@ function GalleryPage() {
       <section className="gallery-grid-section">
         <div className="gallery-page-container">
           <div className="gallery-grid">
-            <div className="gallery-card">
-              <img
-                src="https://images.unsplash.com/photo-1509042239860-f550ce710b93"
-                alt="Gallery 1"
-              />
-            </div>
-
-            <div className="gallery-card">
-              <img
-                src="https://images.unsplash.com/photo-1445116572660-236099ec97a0"
-                alt="Gallery 2"
-              />
-            </div>
-
-            <div className="gallery-card">
-              <img
-                src="https://images.unsplash.com/photo-1453614512568-c4024d13c247"
-                alt="Gallery 3"
-              />
-            </div>
-
-            <div className="gallery-card">
-              <img
-                src="https://images.unsplash.com/photo-1447933601403-0c6688de566e"
-                alt="Gallery 4"
-              />
-            </div>
+            {galleryItems.map((item) => (
+              <div className="gallery-card" key={item.id}>
+                <img
+                  src={item.image_url}
+                  alt={item.title || "Gallery"}
+                />
+              </div>
+            ))}
           </div>
         </div>
       </section>

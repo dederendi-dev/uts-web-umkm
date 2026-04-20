@@ -4,18 +4,14 @@
   top: 0;
   width: 100%;
   padding: 18px 60px;
-
   display: flex;
   align-items: center;
   justify-content: space-between;
-
   background: rgba(255,255,255,0.5);
   backdrop-filter: blur(12px);
-
   transition: all 0.3s ease;
   z-index: 999;
-
-  box-sizing: border-box; /* penting biar tidak melebar */
+  box-sizing: border-box;
 }
 
 /* saat scroll */
@@ -26,10 +22,25 @@
 
 /* LOGO */
 .logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: #222;
+}
+
+.logo-image {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  display: block;
+}
+
+.logo span {
+  display: flex;
+  align-items: center;
   font-size: 20px;
   font-weight: 600;
-  color: #222;
-  text-decoration: none;
 }
 
 .logo-highlight {
@@ -114,12 +125,10 @@
     top: 80px;
     left: 0;
     width: 100%;
-
     flex-direction: column;
     background: white;
     align-items: center;
     padding: 20px 0;
-
     display: none;
   }
 

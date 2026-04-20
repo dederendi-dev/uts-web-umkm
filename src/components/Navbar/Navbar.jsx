@@ -29,7 +29,14 @@ function Navbar() {
   return (
     <nav className={`navbar ${isScrolled ? "scrolled" : ""}`}>
       <Link to="/" className="logo" onClick={handleLinkClick}>
-        <span className="logo-highlight">CV</span> Hasna
+        <img
+          src="https://mlycwggvkcajomydywlg.supabase.co/storage/v1/object/public/home/logo.jpg"
+          alt="CV Hasna Logo"
+          className="logo-image"
+        />
+        <span>
+          <span className="logo-highlight">CV</span> Hasna
+        </span>
       </Link>
 
       <ul className={`nav-links ${menuActive ? "active" : ""}`}>
