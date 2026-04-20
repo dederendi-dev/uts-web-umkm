@@ -37,11 +37,12 @@ function Gallery() {
     <section id="gallery" className="gallery">
       <div className="gallery-container">
         <div className="gallery-header">
-          <h5>OUTLET & BUKTI BISNIS</h5>
-          <h2>Gallery Outlet & Aktivitas Usaha</h2>
+          <h5>GALERI OUTLET & USAHA</h5>
+          <h2>Galeri Kemitraan Javacafe</h2>
           <p>
-            Dokumentasi outlet, aktivitas operasional, dan bukti nyata
-            perkembangan bisnis bersama CV Hasna dalam membangun usaha kopi modern.
+            Dokumentasi outlet mitra, aktivitas operasional, dan kesuksesan bisnis
+            Javacafe, bukti nyata dalam membangun usaha kopi kekinian
+            yang menjanjikan.
           </p>
         </div>
 
