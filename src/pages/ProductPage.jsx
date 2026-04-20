@@ -1,7 +1,28 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { supabase } from "../supabase";
 import "./ProductPage.css";
 
 function ProductPage() {
+  const navigate = useNavigate();
+
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    fetchProducts();
+  }, []);
+
+  const fetchProducts = async () => {
+    const { data, error } = await supabase
+      .from("products")
+      .select("*")
+      .order("id", { ascending: true });
+
+    if (!error) {
+      setProducts(data || []);
+    }
+  };
+
   return (
     <div>
       {/* HERO SECTION */}
@@ -23,71 +44,27 @@ function ProductPage() {
       <section className="featured-product">
         <div className="products-container">
 
-          {/* ITEM 1 */}
-          <div className="featured-product-wrapper">
-            <div className="featured-product-image">
-              <img
-                src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085"
-                alt="Caffe Latte"
-              />
+          {products.map((item, index) => (
+            <div
+              key={item.id}
+              className={`featured-product-wrapper ${
+                index % 2 !== 0 ? "reverse" : ""
+              }`}
+            >
+              <div className="featured-product-image">
+                <img
+                  src={item.image}
+                  alt={item.name}
+                />
+              </div>
+
+              <div className="featured-product-content">
+                <h5>{item.category}</h5>
+                <h2>{item.name}</h2>
+                <p>{item.description}</p>
+              </div>
             </div>
-
-            <div className="featured-product-content">
-              <h5>MINUMAN</h5>
-              <h2>Caffe Latte - Signature Premium Coffee</h2>
-              <p>
-                Kopi susu premium dengan cita rasa khas, dibuat dari biji kopi
-                pilihan dan susu berkualitas tinggi untuk pengalaman rasa yang
-                konsisten dan profesional.
-              </p>
-
-              <button className="product-btn">Learn More</button>
-            </div>
-          </div>
-
-          {/* ITEM 2 */}
-          <div className="featured-product-wrapper reverse">
-            <div className="featured-product-image">
-              <img
-                src="https://images.unsplash.com/photo-1509440159596-0249088772ff"
-                alt="Roti Coklat"
-              />
-            </div>
-
-            <div className="featured-product-content">
-              <h5>MAKANAN</h5>
-              <h2>Roti Coklat - Fresh Bakery Selection</h2>
-              <p>
-                Roti lembut premium dengan isian coklat berkualitas, cocok
-                sebagai pairing terbaik untuk bisnis coffee shop modern dan
-                kebutuhan pelanggan harian.
-              </p>
-
-              <button className="product-btn">Learn More</button>
-            </div>
-          </div>
-
-          {/* ITEM 3 */}
-          <div className="featured-product-wrapper">
-            <div className="featured-product-image">
-              <img
-                src="https://images.unsplash.com/photo-1499636136210-6f4ee915583e"
-                alt="Teh Lemon Fresh"
-              />
-            </div>
-
-            <div className="featured-product-content">
-              <h5>MINUMAN</h5>
-              <h2>Teh Lemon Fresh - Refresh Your Business</h2>
-              <p>
-                Minuman teh lemon segar dengan rasa ringan dan menyegarkan,
-                cocok untuk melengkapi variasi menu usaha dan meningkatkan daya
-                tarik customer.
-              </p>
-
-              <button className="product-btn">Learn More</button>
-            </div>
-          </div>
+          ))}
 
         </div>
       </section>
@@ -99,7 +76,12 @@ function ProductPage() {
           Explore our full catalog and discover the best business opportunity
           for your next successful investment.
         </p>
-        <button className="product-btn">Hubungi Kami</button>
+        <button
+          className="product-btn"
+          onClick={() => navigate("/contact")}
+        >
+          Hubungi Kami
+        </button>
       </section>
     </div>
   );

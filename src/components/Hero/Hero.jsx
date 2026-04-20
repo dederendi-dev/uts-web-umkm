@@ -46,16 +46,18 @@ function Hero() {
           <p>{homeData.description}</p>
 
           <div className="hero-buttons">
-            <a href={homeData.button_primary_link || "#products"}>
-              <button className="btn-primary">
-                {homeData.button_primary_text || "Lihat Paket Usaha"}
-              </button>
+            <a
+              href="/products"
+              className="btn-primary"
+            >
+              {homeData.button_primary_text || "Lihat Produk"}
             </a>
 
-            <a href={homeData.button_secondary_link || "#about"}>
-              <button className="btn-secondary">
-                {homeData.button_secondary_text || "Pelajari Lebih Lanjut"}
-              </button>
+            <a
+              href="/contact"
+              className="btn-secondary"
+            >
+              {homeData.button_secondary_text || "Hubungi Kami"}
             </a>
           </div>
         </div>

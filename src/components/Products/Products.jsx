@@ -4,7 +4,6 @@ import './Products.css'
 
 function Products() {
   const [products, setProducts] = useState([])
-  const [isExpanded, setIsExpanded] = useState(false)
   const [width, setWidth] = useState(window.innerWidth)
 
   const [currentIndex, setCurrentIndex] = useState(0)
@@ -18,6 +17,8 @@ function Products() {
   }, [])
 
 
+  // Desktop tampilkan 3 card agar slider bisa benar-benar bergeser
+  // Tablet 2 card, mobile 1 card
   const cardsPerView = width <= 576 ? 1 : width <= 992 ? 2 : 3
   const maxIndex = Math.max(products.length - cardsPerView, 0)
 
@@ -65,7 +66,7 @@ function Products() {
               className="products-grid"
               ref={sliderRef}
               style={{
-                transform: `translateX(-${currentIndex * (100 / cardsPerView)}%)`,
+                transform: `translateX(-${currentIndex * 344}px)`,
                 transition: 'transform 0.6s ease'
               }}
             >

@@ -24,7 +24,11 @@ function Contact() {
   }
 
   if (!contactData) {
-    return <section id="contact"><p>Loading...</p></section>
+    return (
+      <section id="contact" className="contact">
+        <p>Loading...</p>
+      </section>
+    )
   }
 
   return (

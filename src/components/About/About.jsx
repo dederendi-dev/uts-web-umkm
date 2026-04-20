@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { supabase } from '../../supabase'
 import './About.css'
 
 function About() {
   const [aboutData, setAboutData] = useState(null)
+  const navigate = useNavigate()
 
   useEffect(() => {
     fetchAboutData()
@@ -58,7 +60,10 @@ function About() {
             <strong>Misi:</strong> {aboutData.mission}
           </p>
 
-          <button className="about-btn">
+          <button
+            className="about-btn"
+            onClick={() => navigate('/about')}
+          >
             Pelajari Lebih Lanjut
           </button>
         </div>

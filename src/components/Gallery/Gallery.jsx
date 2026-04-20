@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { supabase } from '../../supabase'
 import './Gallery.css'
 
@@ -6,6 +7,7 @@ function Gallery() {
   const [gallery, setGallery] = useState([])
   const [isExpanded, setIsExpanded] = useState(false)
   const [width, setWidth] = useState(window.innerWidth)
+  const navigate = useNavigate()
 
   useEffect(() => {
     fetchGallery()
@@ -62,23 +64,19 @@ function Gallery() {
             </div>
           ))}
         </div>
-
         <div className="gallery-more">
-          {!isExpanded ? (
-            <button
-              className="btn-more"
-              onClick={() => setIsExpanded(true)}
-            >
-              Lihat Gallery Lainnya
-            </button>
-          ) : (
-            <button
-              className="btn-more"
-              onClick={() => setIsExpanded(false)}
-            >
-              Tutup
-            </button>
-          )}
+          <button
+            className="btn-more"
+            onClick={() => {
+              navigate('/gallery')
+              window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+              })
+            }}
+          >
+            Lihat Gallery Lainnya
+          </button>
         </div>
       </div>
     </section>
