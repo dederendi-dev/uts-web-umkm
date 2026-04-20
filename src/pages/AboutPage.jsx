@@ -40,7 +40,7 @@ function AboutPage() {
         <div className="about-page-container">
           <div className="about-page-header">
             <h5>ABOUT US</h5>
-            <h2>Tentang CV Hasna</h2>
+            <h2>Tentang Kemitraan Javacafe</h2>
             <p>
               {aboutData.description}
             </p>
@@ -54,24 +54,24 @@ function AboutPage() {
           <div className="about-story-wrapper">
             <div className="about-story-image">
               <img
-                src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085"
-                alt="About CV Hasna"
+                src={aboutData.image_url}
+                alt="About Javacafe"
               />
             </div>
 
             <div className="about-story-content">
               <h5>OUR JOURNEY</h5>
-              <h2>Membangun Bisnis yang Bertumbuh Bersama</h2>
+              <h2>Membangun Bisnis Kopi yang Tumbuh Bersama</h2>
               <p>
-                CV Hasna hadir untuk membantu para mitra membangun bisnis yang
-                berkelanjutan melalui sistem usaha yang terstruktur, produk
-                premium, dan dukungan penuh dari tim profesional.
+                Javacafe hadir sebagai peluang usaha kopi kekinian dengan sistem
+                kemitraan yang terstruktur, produk berkualitas, dan dukungan
+                operasional penuh untuk membantu mitra berkembang lebih cepat.
               </p>
 
               <p>
-                Kami percaya bahwa bisnis yang baik bukan hanya soal produk,
-                tetapi juga sistem, kepercayaan, dan pertumbuhan bersama dalam
-                jangka panjang.
+                Kami percaya bisnis yang kuat bukan hanya soal jualan, tetapi juga
+                tentang sistem yang berjalan, brand yang dipercaya, dan pertumbuhan
+                bersama dalam jangka panjang.
               </p>
 
               <p>
@@ -100,7 +100,7 @@ function AboutPage() {
         <div className="about-page-container">
           <div className="about-page-header">
             <h5>WHY CHOOSE US</h5>
-            <h2>Kenapa Memilih CV Hasna?</h2>
+            <h2>Kenapa Memilih Javacafe?</h2>
             <p>
               Kami menghadirkan sistem bisnis yang siap jalan, dukungan penuh,
               dan peluang usaha nyata untuk pertumbuhan jangka panjang.
