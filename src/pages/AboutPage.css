@@ -30,6 +30,7 @@
   font-weight: 700;
   color: #222;
   margin: 12px 0;
+  word-break: break-word;
 }
 
 .about-page-header p {
@@ -38,6 +39,7 @@
   color: #666;
   font-size: 17px;
   line-height: 1.8;
+  word-break: break-word;
 }
 
 /* COMPANY STORY */
@@ -204,7 +206,7 @@
 
 @media (max-width: 576px) {
   .about-page-hero {
-    padding: 95px 16px 55px;
+    padding: 88px 14px 46px;
   }
 
   .about-page-header h5 {
@@ -213,19 +215,21 @@
   }
 
   .about-page-header h2 {
-    font-size: 28px;
-    line-height: 1.35;
+    font-size: 24px;
+    line-height: 1.4;
+    text-align: center;
   }
 
   .about-page-header p {
-    font-size: 14px;
+    font-size: 13px;
     line-height: 1.7;
     max-width: 100%;
+    text-align: center;
   }
 
   .about-story,
   .about-values {
-    padding: 60px 16px;
+    padding: 52px 14px;
   }
 
   .about-story-wrapper {
@@ -246,9 +250,9 @@
   }
 
   .about-story-content h2 {
-    font-size: 24px;
+    font-size: 22px;
     line-height: 1.4;
-    margin-bottom: 14px;
+    margin-bottom: 12px;
   }
 
   .about-story-content p,
@@ -264,8 +268,8 @@
   }
 
   .about-value-card {
-    padding: 24px 20px;
-    border-radius: 18px;
+    padding: 20px 18px;
+    border-radius: 16px;
   }
 
   .about-value-card h3 {

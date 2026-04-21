@@ -30,6 +30,7 @@
   font-weight: 700;
   color: #222;
   margin: 12px 0;
+  word-break: break-word;
 }
 
 .gallery-page-header p {
@@ -38,6 +39,7 @@
   color: #666;
   font-size: 17px;
   line-height: 1.8;
+  word-break: break-word;
 }
 
 /* FEATURED SECTION */
@@ -170,29 +172,35 @@
 
 @media (max-width: 576px) {
   .gallery-page-hero {
-    padding: 100px 20px 60px;
+    padding: 88px 14px 46px;
   }
 
   .gallery-page-header h2 {
-    font-size: 30px;
+    font-size: 24px;
+    line-height: 1.4;
+    text-align: center;
   }
 
   .gallery-page-header p,
   .gallery-featured-left p {
-    font-size: 14px;
+    font-size: 13px;
+    line-height: 1.7;
+    text-align: center;
   }
 
   .gallery-featured-left h2 {
-    font-size: 28px;
+    font-size: 22px;
+    line-height: 1.4;
   }
 
   .gallery-featured,
   .gallery-grid-section {
-    padding: 70px 20px;
+    padding: 52px 14px;
   }
 
   .gallery-featured-right img,
   .gallery-card img {
-    height: 260px;
+    height: 220px;
+    border-radius: 16px;
   }
 }
