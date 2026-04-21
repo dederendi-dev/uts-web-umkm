@@ -4,9 +4,11 @@ import "./GalleryPage.css";
 
 function GalleryPage() {
   const [galleryItems, setGalleryItems] = useState([]);
+  const [homeData, setHomeData] = useState(null);
 
   useEffect(() => {
     fetchGallery();
+    fetchHomeImage();
   }, []);
 
   const fetchGallery = async () => {
@@ -20,17 +22,30 @@ function GalleryPage() {
     }
   };
 
+  const fetchHomeImage = async () => {
+    const { data, error } = await supabase
+      .from("home")
+      .select("*")
+      .limit(1)
+      .single();
+
+    if (!error && data) {
+      setHomeData(data);
+    }
+  };
+
   return (
     <div>
       {/* HERO GALLERY */}
       <section className="gallery-page-hero">
         <div className="gallery-page-container">
           <div className="gallery-page-header">
-            <h5>OUR GALLERY</h5>
-            <h2>Gallery CV Hasna</h2>
+            <h5>OUTLET & BUKTI BISNIS</h5>
+            <h2>Gallery Outlet & Aktivitas Usaha</h2>
             <p>
-              Dokumentasi outlet, aktivitas operasional, serta perjalanan bisnis
-              kami dalam membangun peluang usaha modern yang bertumbuh bersama.
+              Dokumentasi outlet, aktivitas operasional, dan bukti nyata
+              perkembangan bisnis bersama CV Hasna dalam membangun usaha
+              kopi modern yang terus bertumbuh.
             </p>
           </div>
         </div>
@@ -41,18 +56,19 @@ function GalleryPage() {
         <div className="gallery-page-container">
           <div className="gallery-featured-wrapper">
             <div className="gallery-featured-left">
-              <h5>FEATURED MOMENT</h5>
-              <h2>Perjalanan Bisnis & Aktivitas Outlet</h2>
+              <h5>PERJALANAN BISNIS</h5>
+              <h2>Aktivitas Outlet & Perkembangan Mitra</h2>
               <p>
-                Kami percaya bahwa pertumbuhan bisnis terbaik lahir dari proses,
-                konsistensi, dan kemitraan yang berjalan nyata setiap hari.
+                Setiap outlet yang berjalan adalah bukti nyata dari proses,
+                konsistensi, dan dukungan kemitraan yang terus berkembang
+                bersama Javacafe Indonesia.
               </p>
             </div>
 
             <div className="gallery-featured-right">
               <img
-                src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085"
-                alt="Gallery Featured"
+                src={homeData?.hero_image || ""}
+                alt={homeData?.title || "Home Featured"}
               />
             </div>
           </div>

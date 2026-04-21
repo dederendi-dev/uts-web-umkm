@@ -45,6 +45,7 @@
   line-height: 1.15;
   font-weight: 700;
   color: #222;
+  word-break: break-word;
 }
 
 .hero-left h1 span {
@@ -56,6 +57,7 @@
   font-size: 18px;
   line-height: 1.8;
   color: #666;
+  word-break: break-word;
 }
 
 .hero-buttons {
@@ -119,11 +121,12 @@
 /* Tablet */
 @media (max-width: 992px) {
   .hero {
-    padding: 110px 24px 60px;
+    padding: 100px 20px 60px;
   }
 
   .hero-left h1 {
-    font-size: 48px;
+    font-size: 44px;
+    line-height: 1.25;
   }
 
   .hero-left p {
@@ -131,44 +134,68 @@
   }
 
   .hero-right img {
+    width: 100%;
     max-width: 420px;
-    max-height: 360px;
+    max-height: 340px;
   }
 }
 
-/* Mobile */
 @media (max-width: 768px) {
   .hero {
     min-height: auto;
-    padding: 110px 20px 50px;
+    padding: 88px 14px 42px;
   }
 
   .hero-container {
     flex-direction: column-reverse;
     text-align: center;
-    gap: 32px;
+    gap: 22px;
   }
 
   .hero-left {
+    min-width: 100%;
     max-width: 100%;
     text-align: center;
   }
 
+  .hero-tag {
+    font-size: 12px;
+    padding: 7px 16px;
+    margin-bottom: 14px;
+  }
+
   .hero-left h1 {
-    font-size: 38px;
+    font-size: 28px;
+    line-height: 1.35;
+    margin-bottom: 14px;
   }
 
   .hero-left p {
-    font-size: 16px;
+    font-size: 13px;
     line-height: 1.7;
   }
 
   .hero-buttons {
+    margin-top: 20px;
     justify-content: center;
+    gap: 10px;
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    padding: 10px 18px;
+    font-size: 13px;
+  }
+
+  .hero-right {
+    min-width: 100%;
   }
 
   .hero-right img {
-    max-width: 320px;
-    max-height: 280px;
+    width: 100%;
+    max-width: 280px;
+    max-height: 220px;
+    border-radius: 16px;
+    object-fit: cover;
   }
 }

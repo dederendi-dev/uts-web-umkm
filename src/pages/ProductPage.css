@@ -29,6 +29,7 @@
   font-weight: 700;
   color: #222;
   margin: 12px 0;
+  word-break: break-word;
 }
 
 .product-page-hero .products-header p {
@@ -37,6 +38,7 @@
   color: #666;
   font-size: 17px;
   line-height: 1.8;
+  word-break: break-word;
 }
 
 /* FEATURED PRODUCT SECTION */
@@ -142,19 +144,45 @@
     font-size: 40px;
   }
 
+  .featured-product {
+    padding: 80px 20px;
+  }
+
   .featured-product-wrapper,
   .featured-product-wrapper.reverse {
     grid-template-columns: 1fr;
     direction: ltr;
-    gap: 30px;
+    gap: 32px;
+    margin-bottom: 60px;
+  }
+
+  .featured-product-image {
+    width: 100%;
+  }
+
+  .featured-product-image img {
+    width: 100%;
+    height: 320px;
+    border-radius: 20px;
+    object-fit: cover;
+  }
+
+  .featured-product-content {
+    width: 100%;
   }
 
   .featured-product-content h2 {
     font-size: 34px;
+    line-height: 1.3;
   }
 
-  .featured-product-image img {
-    height: 320px;
+  .featured-product-content p {
+    font-size: 16px;
+    line-height: 1.8;
+  }
+
+  .products-more {
+    padding: 80px 20px;
   }
 
   .products-more h2 {
@@ -164,32 +192,78 @@
 
 @media (max-width: 576px) {
   .product-page-hero {
-    padding: 100px 20px 60px;
+    padding: 88px 14px 44px;
+  }
+
+  .product-page-hero .products-header h5 {
+    font-size: 12px;
+    letter-spacing: 1px;
   }
 
   .product-page-hero .products-header h2 {
-    font-size: 30px;
+    font-size: 24px;
+    line-height: 1.4;
+    text-align: center;
   }
 
   .product-page-hero .products-header p,
   .products-more p {
-    font-size: 15px;
+    font-size: 13px;
+    line-height: 1.7;
+    text-align: center;
   }
 
   .featured-product {
-    padding: 70px 20px;
+    padding: 52px 14px;
+  }
+
+  .featured-product-wrapper,
+  .featured-product-wrapper.reverse {
+    gap: 24px;
+    margin-bottom: 48px;
+  }
+
+  .featured-product-image img {
+    width: 100%;
+    height: auto;
+    max-height: 260px;
+    border-radius: 16px;
+    object-fit: cover;
+  }
+
+  .featured-product-content h5 {
+    font-size: 12px;
+    margin-bottom: 10px;
   }
 
   .featured-product-content h2 {
-    font-size: 28px;
+    font-size: 22px;
+    line-height: 1.4;
+    margin-bottom: 12px;
   }
 
-  .featured-product-content p,
+  .featured-product-content p {
+    font-size: 14px;
+    line-height: 1.7;
+    margin-bottom: 20px;
+  }
+
+  .featured-product-content ul {
+    margin-bottom: 20px;
+  }
+
   .featured-product-content ul li {
     font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 10px;
+  }
+
+  .products-more {
+    padding: 52px 14px;
   }
 
   .products-more h2 {
-    font-size: 28px;
+    font-size: 22px;
+    line-height: 1.4;
   }
 }
