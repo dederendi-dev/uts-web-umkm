@@ -56,6 +56,11 @@ function Navbar() {
           </NavLink>
         </li>
         <li>
+          <NavLink to="/careers" onClick={handleLinkClick}>
+            Careers
+          </NavLink>
+        </li>
+        <li>
           <NavLink to="/gallery" onClick={handleLinkClick}>
             Gallery
           </NavLink>

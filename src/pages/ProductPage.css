@@ -142,19 +142,45 @@
     font-size: 40px;
   }
 
+  .featured-product {
+    padding: 80px 20px;
+  }
+
   .featured-product-wrapper,
   .featured-product-wrapper.reverse {
     grid-template-columns: 1fr;
     direction: ltr;
-    gap: 30px;
+    gap: 32px;
+    margin-bottom: 60px;
+  }
+
+  .featured-product-image {
+    width: 100%;
+  }
+
+  .featured-product-image img {
+    width: 100%;
+    height: 320px;
+    border-radius: 20px;
+    object-fit: cover;
+  }
+
+  .featured-product-content {
+    width: 100%;
   }
 
   .featured-product-content h2 {
     font-size: 34px;
+    line-height: 1.3;
   }
 
-  .featured-product-image img {
-    height: 320px;
+  .featured-product-content p {
+    font-size: 16px;
+    line-height: 1.8;
+  }
+
+  .products-more {
+    padding: 80px 20px;
   }
 
   .products-more h2 {
@@ -164,32 +190,76 @@
 
 @media (max-width: 576px) {
   .product-page-hero {
-    padding: 100px 20px 60px;
+    padding: 95px 16px 50px;
+  }
+
+  .product-page-hero .products-header h5 {
+    font-size: 12px;
+    letter-spacing: 1px;
   }
 
   .product-page-hero .products-header h2 {
-    font-size: 30px;
+    font-size: 28px;
+    line-height: 1.3;
   }
 
   .product-page-hero .products-header p,
   .products-more p {
-    font-size: 15px;
+    font-size: 14px;
+    line-height: 1.7;
   }
 
   .featured-product {
-    padding: 70px 20px;
+    padding: 60px 16px;
+  }
+
+  .featured-product-wrapper,
+  .featured-product-wrapper.reverse {
+    gap: 24px;
+    margin-bottom: 48px;
+  }
+
+  .featured-product-image img {
+    width: 100%;
+    height: auto;
+    max-height: 320px;
+    border-radius: 18px;
+    object-fit: cover;
+  }
+
+  .featured-product-content h5 {
+    font-size: 12px;
+    margin-bottom: 10px;
   }
 
   .featured-product-content h2 {
-    font-size: 28px;
+    font-size: 24px;
+    line-height: 1.35;
+    margin-bottom: 14px;
   }
 
-  .featured-product-content p,
+  .featured-product-content p {
+    font-size: 14px;
+    line-height: 1.7;
+    margin-bottom: 20px;
+  }
+
+  .featured-product-content ul {
+    margin-bottom: 20px;
+  }
+
   .featured-product-content ul li {
     font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 10px;
+  }
+
+  .products-more {
+    padding: 60px 16px;
   }
 
   .products-more h2 {
-    font-size: 28px;
+    font-size: 26px;
+    line-height: 1.4;
   }
 }
