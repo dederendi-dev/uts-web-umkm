@@ -35,29 +35,33 @@ function Contact() {
     <section id="contact" className="contact">
       <div className="contact-top">
         <div className="contact-intro">
-          <h2>Contact Us</h2>
+          <h2>Hubungi Kami</h2>
           <p>
-            We’re here to answer your questions, discuss new
-            opportunities, and help you find the right solution for your
-            needs. Reach out to our team anytime.
+            Kami siap membantu Anda mendapatkan informasi produk,
+            peluang kemitraan, serta konsultasi usaha minuman bersama
+            CV Hasna Berkah Indonesia. Hubungi tim kami kapan saja.
           </p>
         </div>
 
         <div className="contact-box small-box">
-          <h3>Email Us</h3>
+          <h3>Email Kami</h3>
           <p>{contactData.email}</p>
         </div>
 
         <div className="contact-box small-box">
-          <h3>Call Us</h3>
+          <h3>Telepon Kami</h3>
           <p>{contactData.phone}</p>
         </div>
       </div>
 
       <div className="contact-bottom">
         <div className="contact-box address-box">
-          <h3>Our Address</h3>
-          <p>{contactData.address}</p>
+          <h3>Alamat Kami</h3>
+          <p>
+            Jl. Raya Pengalusan No.6, Kompas, Pengalusan,
+            Kec. Mrebet, Kabupaten Purbalingga,
+            Jawa Tengah 53352
+          </p>
         </div>
 
         <div className="contact-box map-box">

@@ -29,12 +29,12 @@ function ProductPage() {
       <section className="product-page-hero">
         <div className="products-container">
           <div className="products-header">
-            <h5>OUR PRODUCTS</h5>
-            <h2>Explore CV Hasna Products</h2>
+            <h5>PAKET USAHA</h5>
+            <h2>Peluang Bisnis Minuman Modern</h2>
             <p>
-              Discover our premium coffee business packages, herbal products,
-              and partnership opportunities designed to support modern
-              entrepreneurship with trusted quality and strong business systems.
+              Temukan berbagai pilihan minuman unggulan dan paket kemitraan
+              Javacafe yang dirancang untuk membantu membangun usaha kopi
+              modern dengan sistem yang siap jalan dan dukungan penuh.
             </p>
           </div>
         </div>
@@ -74,10 +74,11 @@ function ProductPage() {
 
       {/* CTA SECTION */}
       <section className="products-more">
-        <h2>Need More Product Information?</h2>
+        <h2>Butuh Informasi Produk Lebih Lengkap?</h2>
         <p>
-          Explore our full catalog and discover the best business opportunity
-          for your next successful investment.
+          Temukan pilihan minuman terbaik dan peluang kemitraan yang
+          sesuai untuk memulai usaha bersama CV Hasna Berkah Indonesia
+          dengan sistem yang siap jalan.
         </p>
         <button
           className="product-btn"
