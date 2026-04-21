@@ -45,12 +45,12 @@ function Contact() {
 
         <div className="contact-box small-box">
           <h3>Email Kami</h3>
-          <p>{contactData.email}</p>
+          <p>haznaberkahindonesia@gmail.com</p>
         </div>
 
         <div className="contact-box small-box">
           <h3>Telepon Kami</h3>
-          <p>{contactData.phone}</p>
+          <p>0858-7833-7725</p>
         </div>
       </div>
 

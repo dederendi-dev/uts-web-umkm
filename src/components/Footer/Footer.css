@@ -12,10 +12,12 @@
 
 /* CONTAINER */
 .footer-container {
-  display: flex;
-  justify-content: space-between;
-  gap: 50px;
-  margin-bottom: 40px;
+  max-width: 1200px;
+  margin: 0 auto 40px;
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr 1fr;
+  gap: 60px;
+  align-items: start;
 }
 
 /* BRAND */
@@ -98,8 +100,10 @@
 
 .footer-contact p {
   color: #ccc;
-  margin-bottom: 8px;
-  line-height: 1.7;
+  margin-bottom: 14px;
+  line-height: 1.8;
+  word-break: break-word;
+  overflow-wrap: break-word;
 }
 
 /* BOTTOM */
@@ -118,8 +122,8 @@
   }
 
   .footer-container {
-    flex-direction: column;
-    gap: 24px;
+    grid-template-columns: 1fr;
+    gap: 35px;
     margin-bottom: 20px;
   }
 

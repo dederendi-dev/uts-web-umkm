@@ -20,13 +20,27 @@ const Footer = () => {
           </p>
 
           <div className="footer-social">
-            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
+            <a
+              href="https://www.instagram.com/haznaberkahindonesia?igsh=eXdjOWo1bnphbnZr"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <FaInstagram />
             </a>
-            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
+
+            <a
+              href="https://www.facebook.com/share/1GkUZc14DE/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <FaFacebookF />
             </a>
-            <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer">
+
+            <a
+              href="https://www.tiktok.com/@hazna.berkah.indo?_r=1&_t=ZS-95iBd2EARfT"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <FaTiktok />
             </a>
           </div>
@@ -47,9 +61,13 @@ const Footer = () => {
         {/* CONTACT */}
         <div className="footer-contact">
           <h4>Kontak</h4>
-          <p>Email: cvhasna@email.com</p>
-          <p>Phone: +62 812-3456-7890</p>
-          <p>Alamat: Indonesia</p>
+          <p>Email: haznaberkahindonesia@gmail.com</p>
+          <p>Phone: 0858-7833-7725</p>
+          <p>
+            Alamat: Jl. Raya Pengalusan No.6, Kompas, Pengalusan,
+            Kec. Mrebet, Kabupaten Purbalingga,
+            Jawa Tengah 53352
+          </p>
         </div>
 
       </div>
