@@ -13,10 +13,12 @@ const Footer = () => {
 
         {/* BRAND */}
         <div className="footer-brand">
-          <h2><span>CV</span> Hasna</h2>
+          <div className="footer-badge">
+            ☕ Premium Coffee Partnership
+          </div>
+          <h2><span>Java</span>Cafe</h2>
           <p>
-            Penyedia produk makanan dan minuman berkualitas dengan standar terbaik
-            untuk memenuhi kebutuhan konsumen modern.
+            Membangun ekosistem bisnis kopi modern melalui kemitraan yang terpercaya, inovatif, dan berkelanjutan di seluruh Indonesia.
           </p>
 
           <div className="footer-social">
@@ -44,11 +46,28 @@ const Footer = () => {
               <FaTiktok />
             </a>
           </div>
+
+          <div className="footer-stats">
+            <div className="footer-stat">
+              <strong>50+</strong>
+              <span>Mitra</span>
+            </div>
+
+            <div className="footer-stat">
+              <strong>100%</strong>
+              <span>Support</span>
+            </div>
+
+            <div className="footer-stat">
+              <strong>24/7</strong>
+              <span>Consulting</span>
+            </div>
+          </div>
         </div>
 
         {/* NAVIGATION */}
         <div className="footer-links">
-          <h4>Menu</h4>
+          <h4>Quick Navigation</h4>
           <ul>
             <li><Link to="/">Home</Link></li>
             <li><Link to="/about">About</Link></li>
@@ -60,7 +79,7 @@ const Footer = () => {
 
         {/* CONTACT */}
         <div className="footer-contact">
-          <h4>Kontak</h4>
+          <h4>Contact Center</h4>
           <p>Email: haznaberkahindonesia@gmail.com</p>
           <p>Phone: 0858-7833-7725</p>
           <p>
@@ -74,7 +93,7 @@ const Footer = () => {
 
       {/* COPYRIGHT */}
       <div className="footer-bottom">
-        <p>© {new Date().getFullYear()} CV Hasna. All rights reserved.</p>
+        <p>© {new Date().getFullYear()} Javacafe Partnership Ecosystem. Crafted with modern web technology.</p>
       </div>
 
     </footer>

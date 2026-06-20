@@ -48,19 +48,51 @@ function Products() {
     <section id="products" className="products">
       <div className="products-container">
         <div className="products-header">
+          <div className="products-badge">
+            ☕ Kemitraan Premium Javacafe
+          </div>
+
           <h5>PAKET KEMITRAAN</h5>
-          <h2>Bangun Bisnis Kopi Bersama Javacafe</h2>
+
+          <h2>
+            Bangun Bisnis
+            <span> Kopi Modern</span>
+          </h2>
+
           <p>
             Mulai usaha kopi kekinian dengan sistem kemitraan terpercaya,
             dukungan operasional lengkap, dan brand yang terus berkembang
             bersama Javacafe.
           </p>
+
+          <div className="products-stats">
+            <div className="products-stat">
+              <strong>50+</strong>
+              <span>Mitra Aktif</span>
+            </div>
+
+            <div className="products-stat">
+              <strong>100%</strong>
+              <span>Support Operasional</span>
+            </div>
+
+            <div className="products-stat">
+              <strong>24/7</strong>
+              <span>Konsultasi Bisnis</span>
+            </div>
+          </div>
         </div>
 
         <div className="products-slider-wrapper">
-          <button className="slider-btn prev" onClick={prevSlide}>
-            ←
-          </button>
+          <div className="slider-floating-nav">
+            <button className="slider-btn prev" onClick={prevSlide}>
+              ←
+            </button>
+
+            <button className="slider-btn next" onClick={nextSlide}>
+              →
+            </button>
+          </div>
 
           <div className="products-slider">
             <div
@@ -73,23 +105,27 @@ function Products() {
             >
               {products.map((item) => (
                 <div className="product-card" key={item.id}>
+                  <div className="product-glow"></div>
                   <div className="product-image">
                     <img src={item.image_url} alt={item.name} />
                   </div>
 
                   <div className="product-content">
+                    <span className="product-badge">{item.category}</span>
+
                     <h3>{item.name}</h3>
-                    <p><strong>Paket:</strong> {item.category}</p>
+                    <div className="product-divider"></div>
+
                     <p>{item.description}</p>
+
+                    <button className="product-btn">
+                      Jelajahi Paket →
+                    </button>
                   </div>
                 </div>
               ))}
             </div>
           </div>
-
-          <button className="slider-btn next" onClick={nextSlide}>
-            →
-          </button>
         </div>
 
       </div>

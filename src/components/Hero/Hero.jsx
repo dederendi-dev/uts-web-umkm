@@ -37,33 +37,51 @@ function Hero() {
     <section id="home" className="hero">
       <div className="hero-container">
         <div className="hero-left">
-          <p className="hero-tag">☕ Bisnis Kopi Masa Kini</p>
+          <div className="hero-badge">
+            <span>PREMIUM COFFEE ECOSYSTEM</span>
+          </div>
 
-          <h1>
-            {homeData.title} <span>{homeData.highlight_text}</span>
+          <h1 className="hero-title">
+            Mitra Bisnis.
+            <br />
+            Dirancang Lebih Baik.
           </h1>
 
-          <p>{homeData.description}</p>
+          <p className="hero-description">
+            Sistem kemitraan kopi modern dengan branding premium,
+            operasional terstandarisasi, dan dukungan penuh untuk
+            membantu mitra bertumbuh secara berkelanjutan.
+          </p>
 
           <div className="hero-buttons">
-            <a
-              href="/products"
-              className="btn-primary"
-            >
-              {homeData.button_primary_text || "Lihat Produk"}
+            <a href="#products" className="btn-primary">
+              Lihat Paket
             </a>
 
-            <a
-              href="/contact"
-              className="btn-secondary"
-            >
-              {homeData.button_secondary_text || "Hubungi Kami"}
+            <a href="#contact" className="btn-secondary">
+              Konsultasi
             </a>
           </div>
         </div>
 
         <div className="hero-right">
-          <img src={homeData.hero_image} alt="Hero" />
+          <div className="glass-orb orb-1"></div>
+          <div className="glass-orb orb-2"></div>
+
+          <div className="hero-glass-frame">
+            <img
+              src={homeData.hero_image}
+              alt="Javacafe Premium Partnership"
+            />
+
+            <div className="floating-card floating-card-top">
+              <span>50+ Active Partners</span>
+            </div>
+
+            <div className="floating-card floating-card-bottom">
+              <span>24/7 Operational Support</span>
+            </div>
+          </div>
         </div>
       </div>
     </section>

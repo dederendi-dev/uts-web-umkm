@@ -37,19 +37,27 @@ function Gallery() {
     <section id="gallery" className="gallery">
       <div className="gallery-container">
         <div className="gallery-header">
+          <div className="gallery-badge">
+            📸 Galeri Premium Javacafe
+          </div>
+
           <h5>GALERI OUTLET & USAHA</h5>
-          <h2>Galeri Kemitraan Javacafe</h2>
+
+          <h2>
+            Perjalanan Sukses
+            <span> Mitra Javacafe</span>
+          </h2>
+
           <p>
-            Dokumentasi outlet mitra, aktivitas operasional, dan kesuksesan bisnis
-            Javacafe, bukti nyata dalam membangun usaha kopi kekinian
-            yang menjanjikan.
+            Dokumentasi outlet modern, aktivitas operasional, dan kisah sukses
+            mitra Javacafe yang berkembang bersama sistem bisnis kopi kekinian.
           </p>
         </div>
 
         <div className="gallery-grid">
           {gallery.slice(0, visibleCount).map((item) => (
             <div className="gallery-item" key={item.id}>
-              
+              <div className="gallery-glow"></div>
               <div className="gallery-image">
                 <img
                   src={item.image_url || 'https://via.placeholder.com/400x300?text=No+Image'}
@@ -59,6 +67,7 @@ function Gallery() {
 
               <div className="gallery-content">
                 <h3>{item.title}</h3>
+                <div className="gallery-divider"></div>
                 <p>{item.description}</p>
               </div>
 
@@ -76,7 +85,7 @@ function Gallery() {
               })
             }}
           >
-            Lihat Gallery Lainnya
+            Jelajahi Semua Galeri
           </button>
         </div>
       </div>

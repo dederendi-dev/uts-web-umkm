@@ -42,7 +42,7 @@ function About() {
         </div>
 
         <div className="about-right">
-          <span className="about-subtitle">Tentang Kami</span>
+          <span className="about-subtitle">☕ Tentang Javacafe</span>
 
           <h2 className="about-title">
             {aboutData.headline || "Bangun Bisnis Kopi Modern Bersama Kami"}
@@ -52,13 +52,32 @@ function About() {
             {aboutData.description}
           </p>
 
-          <p className="about-desc">
-            <strong>Visi:</strong> {aboutData.vision}
-          </p>
+          <div className="about-highlights">
+            <div className="highlight-card">
+              <span className="highlight-number">50+</span>
+              <span className="highlight-label">Mitra Aktif</span>
+            </div>
 
-          <p className="about-desc">
-            <strong>Misi:</strong> {aboutData.mission}
-          </p>
+            <div className="highlight-card">
+              <span className="highlight-number">100%</span>
+              <span className="highlight-label">Biji Kopi Lokal</span>
+            </div>
+
+            <div className="highlight-card">
+              <span className="highlight-number">24/7</span>
+              <span className="highlight-label">Dukungan Mitra</span>
+            </div>
+          </div>
+
+          <div className="about-glass-card">
+            <h4>Visi</h4>
+            <p>{aboutData.vision}</p>
+          </div>
+
+          <div className="about-glass-card">
+            <h4>Misi</h4>
+            <p>{aboutData.mission}</p>
+          </div>
 
           <button
             className="about-btn"
