@@ -1,15 +1,22 @@
 import React, { useEffect, useState } from "react";
 import { supabase } from "../supabase";
 import "./AboutPage.css";
+import Loading from "../components/Loading/Loading";
+import ErrorState from "../components/ErrorState/ErrorState";
 
 function AboutPage() {
   const [aboutData, setAboutData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
     fetchAboutData();
   }, []);
 
   const fetchAboutData = async () => {
+    setLoading(true);
+    setError(false);
+
     const { data, error } = await supabase
       .from("about")
       .select("*")
@@ -17,20 +24,21 @@ function AboutPage() {
 
     if (error) {
       console.error("Error fetch about:", error.message);
+      setError(true);
+      setLoading(false);
       return;
     }
 
     setAboutData(data);
+    setLoading(false);
   };
 
-  if (!aboutData) {
-    return (
-      <section className="about-page-hero">
-        <div className="about-page-container">
-          <p>Loading...</p>
-        </div>
-      </section>
-    );
+  if (loading) {
+    return <Loading />;
+  }
+
+  if (error) {
+    return <ErrorState onRetry={fetchAboutData} />;
   }
 
   return (

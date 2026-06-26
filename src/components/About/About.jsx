@@ -2,9 +2,13 @@ import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { supabase } from '../../supabase'
 import './About.css'
+import Loading from '../Loading/Loading'
+import ErrorState from '../ErrorState/ErrorState'
 
 function About() {
   const [aboutData, setAboutData] = useState(null)
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState(false)
   const navigate = useNavigate()
 
   useEffect(() => {
@@ -12,6 +16,9 @@ function About() {
   }, [])
 
   const fetchAboutData = async () => {
+    setLoading(true)
+    setError(false)
+
     const { data, error } = await supabase
       .from('about')
       .select('*')
@@ -19,14 +26,21 @@ function About() {
 
     if (error) {
       console.error('Error fetch about:', error.message)
+      setError(true)
+      setLoading(false)
       return
     }
 
     setAboutData(data)
+    setLoading(false)
   }
 
-  if (!aboutData) {
-    return <section id="about"><p>Loading...</p></section>
+  if (loading) {
+    return <Loading />
+  }
+
+  if (error) {
+    return <ErrorState onRetry={fetchAboutData} />
   }
 
   return (
@@ -37,6 +51,8 @@ function About() {
             <img
               src={aboutData.image_url}
               alt={aboutData.company_name}
+              loading="lazy"
+              decoding="async"
             />
           </div>
         </div>

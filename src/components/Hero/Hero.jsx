@@ -1,15 +1,22 @@
 import { useEffect, useState } from "react";
 import { supabase } from "../../supabase";
 import "./Hero.css";
+import Loading from "../Loading/Loading";
+import ErrorState from "../ErrorState/ErrorState";
 
 function Hero() {
   const [homeData, setHomeData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
     fetchHomeData();
   }, []);
 
   const fetchHomeData = async () => {
+    setLoading(true);
+    setError(false);
+
     const { data, error } = await supabase
       .from("home")
       .select("*")
@@ -17,20 +24,21 @@ function Hero() {
 
     if (error) {
       console.error("Error fetch home:", error.message);
+      setError(true);
+      setLoading(false);
       return;
     }
 
     setHomeData(data);
+    setLoading(false);
   };
 
-  if (!homeData) {
-    return (
-      <section id="home" className="hero">
-        <div className="hero-container">
-          <p>Loading...</p>
-        </div>
-      </section>
-    );
+  if (loading) {
+    return <Loading />;
+  }
+
+  if (error) {
+    return <ErrorState onRetry={fetchHomeData} />;
   }
 
   return (
@@ -72,6 +80,8 @@ function Hero() {
             <img
               src={homeData.hero_image}
               alt="Javacafe Premium Partnership"
+              loading="lazy"
+              decoding="async"
             />
 
             <div className="floating-card floating-card-top">

@@ -1,9 +1,13 @@
 import { useEffect, useRef, useState } from 'react'
 import { supabase } from '../../supabase'
+import Loading from '../Loading/Loading'
+import ErrorState from '../ErrorState/ErrorState'
 import './Products.css'
 
 function Products() {
   const [products, setProducts] = useState([])
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState(false)
   const [width, setWidth] = useState(window.innerWidth)
 
   const [currentIndex, setCurrentIndex] = useState(0)
@@ -31,6 +35,9 @@ function Products() {
   }
 
   const fetchProducts = async () => {
+    setLoading(true)
+    setError(false)
+
     const { data, error } = await supabase
       .from('products')
       .select('*')
@@ -38,10 +45,21 @@ function Products() {
 
     if (error) {
       console.error('Error fetch products:', error.message)
+      setError(true)
+      setLoading(false)
       return
     }
 
     setProducts(data)
+    setLoading(false)
+  }
+
+  if (loading) {
+    return <Loading />
+  }
+
+  if (error) {
+    return <ErrorState onRetry={fetchProducts} />
   }
 
   return (
@@ -107,7 +125,12 @@ function Products() {
                 <div className="product-card" key={item.id}>
                   <div className="product-glow"></div>
                   <div className="product-image">
-                    <img src={item.image_url} alt={item.name} />
+                    <img
+                      src={item.image_url}
+                      alt={item.name}
+                      loading="lazy"
+                      decoding="async"
+                    />
                   </div>
 
                   <div className="product-content">

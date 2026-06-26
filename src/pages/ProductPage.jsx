@@ -1,27 +1,48 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "../supabase";
+import Loading from "../components/Loading/Loading";
+import ErrorState from "../components/ErrorState/ErrorState";
 import "./ProductPage.css";
 
 function ProductPage() {
   const navigate = useNavigate();
 
   const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
     fetchProducts();
   }, []);
 
   const fetchProducts = async () => {
+    setLoading(true);
+    setError(false);
+
     const { data, error } = await supabase
       .from("products")
       .select("*")
       .order("id", { ascending: true });
 
-    if (!error) {
-      setProducts(data || []);
+    if (error) {
+      console.error("Error fetch products:", error.message);
+      setError(true);
+      setLoading(false);
+      return;
     }
+
+    setProducts(data || []);
+    setLoading(false);
   };
+
+  if (loading) {
+    return <Loading />;
+  }
+
+  if (error) {
+    return <ErrorState onRetry={fetchProducts} />;
+  }
 
   return (
     <div>
@@ -55,6 +76,8 @@ function ProductPage() {
                 <img
   src={item.image_url}
   alt={item.name}
+  loading="lazy"
+  decoding="async"
   onError={(e) => {
     e.target.src = "https://via.placeholder.com/600x400?text=No+Image";
   }}

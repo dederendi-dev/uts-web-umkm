@@ -1,10 +1,14 @@
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { supabase } from '../../supabase'
+import Loading from '../Loading/Loading'
+import ErrorState from '../ErrorState/ErrorState'
 import './Gallery.css'
 
 function Gallery() {
   const [gallery, setGallery] = useState([])
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState(false)
   const [isExpanded, setIsExpanded] = useState(false)
   const [width, setWidth] = useState(window.innerWidth)
   const navigate = useNavigate()
@@ -20,6 +24,9 @@ function Gallery() {
   const visibleCount = isExpanded ? Math.max(gallery.length, 4) : defaultCount
 
   const fetchGallery = async () => {
+    setLoading(true)
+    setError(false)
+
     const { data, error } = await supabase
       .from('gallery')
       .select('*')
@@ -27,10 +34,21 @@ function Gallery() {
 
     if (error) {
       console.error('Error fetch gallery:', error.message)
+      setError(true)
+      setLoading(false)
       return
     }
 
     setGallery(data)
+    setLoading(false)
+  }
+
+  if (loading) {
+    return <Loading />
+  }
+
+  if (error) {
+    return <ErrorState onRetry={fetchGallery} />
   }
 
   return (
@@ -62,6 +80,8 @@ function Gallery() {
                 <img
                   src={item.image_url || 'https://via.placeholder.com/400x300?text=No+Image'}
                   alt={item.title}
+                  loading="lazy"
+                  decoding="async"
                 />
               </div>
 

@@ -1,15 +1,22 @@
 import { useEffect, useState } from "react";
 import { supabase } from "../supabase";
+import Loading from "../components/Loading/Loading";
+import ErrorState from "../components/ErrorState/ErrorState";
 import "./CareerPage.css";
 
 function CareerPage() {
   const [careerItems, setCareerItems] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
     fetchCareers();
   }, []);
 
   const fetchCareers = async () => {
+    setLoading(true);
+    setError(false);
+
     const { data, error } = await supabase
       .from("careers")
       .select("*")
@@ -17,13 +24,22 @@ function CareerPage() {
 
     if (error) {
       console.error("Error fetch careers:", error.message);
+      setError(true);
+      setLoading(false);
       return;
     }
 
-    if (data) {
-      setCareerItems(data);
-    }
+    setCareerItems(data || []);
+    setLoading(false);
   };
+
+  if (loading) {
+    return <Loading />;
+  }
+
+  if (error) {
+    return <ErrorState onRetry={fetchCareers} />;
+  }
 
   return (
     <section className="career-page">
@@ -44,7 +60,12 @@ function CareerPage() {
               key={item.id}
             >
               <div className="career-image">
-                <img src={item.image_url} alt={item.title} />
+                <img
+                  src={item.image_url}
+                  alt={item.title}
+                  loading="lazy"
+                  decoding="async"
+                />
               </div>
 
               <div className="career-content">

@@ -1,15 +1,22 @@
 import { useEffect, useState } from 'react'
 import { supabase } from '../../supabase'
 import './Contact.css'
+import Loading from '../Loading/Loading'
+import ErrorState from '../ErrorState/ErrorState'
 
 function Contact() {
   const [contactData, setContactData] = useState(null)
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState(false)
 
   useEffect(() => {
     fetchContact()
   }, [])
 
   const fetchContact = async () => {
+    setLoading(true)
+    setError(false)
+
     const { data, error } = await supabase
       .from('contact')
       .select('*')
@@ -17,18 +24,21 @@ function Contact() {
 
     if (error) {
       console.error('Error fetch contact:', error.message)
+      setError(true)
+      setLoading(false)
       return
     }
 
     setContactData(data)
+    setLoading(false)
   }
 
-  if (!contactData) {
-    return (
-      <section id="contact" className="contact">
-        <p>Loading...</p>
-      </section>
-    )
+  if (loading) {
+    return <Loading />
+  }
+
+  if (error) {
+    return <ErrorState onRetry={fetchContact} />
   }
 
   return (

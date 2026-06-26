@@ -1,0 +1,126 @@
+.error-container {
+
+    min-height: 60vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 40px;
+
+}
+
+.error-glass {
+
+    width: 340px;
+
+    padding: 36px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    gap: 18px;
+
+    border-radius: 28px;
+
+    background: rgba(255,255,255,.55);
+
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+
+    border: 1px solid rgba(255,255,255,.65);
+
+    box-shadow:
+        0 12px 30px rgba(0,0,0,.08),
+        inset 0 1px 1px rgba(255,255,255,.75);
+
+}
+
+.error-icon{
+
+    width:70px;
+    height:70px;
+
+    border-radius:50%;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    font-size:34px;
+    font-weight:bold;
+
+    color:#ff4d4f;
+
+    background:rgba(255,255,255,.5);
+
+    border:1px solid rgba(255,255,255,.7);
+
+}
+
+.error-glass h3{
+
+    margin:0;
+
+    font-size:22px;
+
+    color:#222;
+
+}
+
+.error-glass p{
+
+    margin:0;
+
+    text-align:center;
+
+    color:#666;
+
+    line-height:1.6;
+
+}
+
+.retry-button{
+
+    margin-top:10px;
+
+    border:none;
+
+    cursor:pointer;
+
+    padding:12px 28px;
+
+    border-radius:999px;
+
+    background:rgba(255,255,255,.65);
+
+    backdrop-filter:blur(20px);
+
+    border:1px solid rgba(255,255,255,.8);
+
+    font-weight:600;
+
+    transition:.25s;
+
+}
+
+.retry-button:hover{
+
+    transform:translateY(-2px);
+
+    background:rgba(255,255,255,.85);
+
+    box-shadow:0 8px 20px rgba(0,0,0,.08);
+
+}
+
+@media(max-width:768px){
+
+.error-glass{
+
+width:100%;
+
+}
+
+}

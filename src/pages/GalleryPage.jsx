@@ -1,38 +1,57 @@
 import React, { useEffect, useState } from "react";
 import { supabase } from "../supabase";
+import Loading from "../components/Loading/Loading";
+import ErrorState from "../components/ErrorState/ErrorState";
 import "./GalleryPage.css";
 
 function GalleryPage() {
   const [galleryItems, setGalleryItems] = useState([]);
   const [homeData, setHomeData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
     fetchGallery();
-    fetchHomeImage();
   }, []);
 
   const fetchGallery = async () => {
-    const { data, error } = await supabase
-      .from("gallery")
-      .select("*")
-      .order("created_at", { ascending: false });
+    setLoading(true);
+    setError(false);
 
-    if (!error && data) {
-      setGalleryItems(data);
+    const [galleryResult, homeResult] = await Promise.all([
+      supabase
+        .from("gallery")
+        .select("*")
+        .order("created_at", { ascending: false }),
+      supabase
+        .from("home")
+        .select("*")
+        .limit(1)
+        .single(),
+    ]);
+
+    if (galleryResult.error || homeResult.error) {
+      console.error(
+        "Error fetch gallery page:",
+        galleryResult.error?.message || homeResult.error?.message
+      );
+      setError(true);
+      setLoading(false);
+      return;
     }
+
+    setGalleryItems(galleryResult.data || []);
+    setHomeData(homeResult.data);
+    setLoading(false);
   };
 
-  const fetchHomeImage = async () => {
-    const { data, error } = await supabase
-      .from("home")
-      .select("*")
-      .limit(1)
-      .single();
+  if (loading) {
+    return <Loading />;
+  }
 
-    if (!error && data) {
-      setHomeData(data);
-    }
-  };
+  if (error) {
+    return <ErrorState onRetry={fetchGallery} />;
+  }
 
   return (
     <div>
@@ -69,6 +88,8 @@ function GalleryPage() {
               <img
                 src={homeData?.hero_image || ""}
                 alt={homeData?.title || "Home Featured"}
+                loading="lazy"
+                decoding="async"
               />
             </div>
           </div>
@@ -84,6 +105,8 @@ function GalleryPage() {
                 <img
                   src={item.image_url}
                   alt={item.title || "Gallery"}
+                  loading="lazy"
+                  decoding="async"
                 />
               </div>
             ))}
