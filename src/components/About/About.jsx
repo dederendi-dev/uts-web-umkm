@@ -46,6 +46,7 @@ function About() {
   return (
     <section id="about" className="about">
       <div className="about-container">
+
         <div className="about-left">
           <div className="about-image">
             <img

@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { supabase } from '../../supabase'
 import Loading from '../Loading/Loading'
 import ErrorState from '../ErrorState/ErrorState'
@@ -12,6 +13,8 @@ function Products() {
 
   const [currentIndex, setCurrentIndex] = useState(0)
   const sliderRef = useRef(null)
+
+  const navigate = useNavigate()
 
   useEffect(() => {
     fetchProducts()
@@ -140,8 +143,15 @@ function Products() {
                     <div className="product-divider"></div>
 
                     <p>{item.description}</p>
-
-                    <button className="product-btn">
+                    <button
+                      type="button"
+                      className="product-btn"
+                      onClick={(e) => {
+                        e.preventDefault()
+                        e.stopPropagation()
+                        navigate('/products')
+                      }}
+                    >
                       Jelajahi Paket →
                     </button>
                   </div>

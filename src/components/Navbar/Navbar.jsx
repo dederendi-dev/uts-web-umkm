@@ -1,10 +1,12 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { NavLink, Link } from "react-router-dom";
 import "./Navbar.css";
 
 function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [menuActive, setMenuActive] = useState(false);
+  const [isClosing, setIsClosing] = useState(false);
+  const closeTimeoutRef = useRef(null);
 
   // efek navbar saat scroll
   useEffect(() => {
@@ -16,14 +18,46 @@ function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  useEffect(() => {
+    return () => {
+      if (closeTimeoutRef.current) {
+        clearTimeout(closeTimeoutRef.current);
+      }
+    };
+  }, []);
+
   // toggle menu mobile
   const toggleMenu = () => {
-    setMenuActive(!menuActive);
+    if (menuActive && !isClosing) {
+      setIsClosing(true);
+
+      closeTimeoutRef.current = setTimeout(() => {
+        setMenuActive(false);
+        setIsClosing(false);
+      }, 500);
+
+      return;
+    }
+
+    if (!menuActive) {
+      if (closeTimeoutRef.current) {
+        clearTimeout(closeTimeoutRef.current);
+      }
+      setIsClosing(false);
+      setMenuActive(true);
+    }
   };
 
   // klik menu auto close (mobile)
   const handleLinkClick = () => {
-    setMenuActive(false);
+    if (!menuActive || isClosing) return;
+
+    setIsClosing(true);
+
+    closeTimeoutRef.current = setTimeout(() => {
+      setMenuActive(false);
+      setIsClosing(false);
+    }, 500);
   };
 
   return (
@@ -39,7 +73,17 @@ function Navbar() {
         </span>
       </Link>
 
-      <ul className={`nav-links ${menuActive ? "active" : ""}`}>
+      {/* hamburger */}
+      <div
+        className={`hamburger ${menuActive && !isClosing ? "active" : ""}`}
+        onClick={toggleMenu}
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
+      <ul className={`nav-links ${menuActive ? "active" : ""} ${isClosing ? "closing" : ""}`}>
         <li>
           <NavLink to="/" onClick={handleLinkClick}>
             Home
@@ -80,13 +124,6 @@ function Navbar() {
         >
           <button>Pesan Sekarang</button>
         </a>
-      </div>
-
-      {/* hamburger */}
-      <div className="hamburger" onClick={toggleMenu}>
-        <span></span>
-        <span></span>
-        <span></span>
       </div>
     </nav>
   );

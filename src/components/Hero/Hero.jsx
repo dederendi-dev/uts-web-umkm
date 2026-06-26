@@ -44,6 +44,7 @@ function Hero() {
   return (
     <section id="home" className="hero">
       <div className="hero-container">
+
         <div className="hero-left">
           <div className="hero-badge">
             <span>PREMIUM COFFEE ECOSYSTEM</span>
@@ -54,6 +55,25 @@ function Hero() {
             <br />
             Dirancang Lebih Baik.
           </h1>
+
+          <div className="hero-mobile-image">
+            <div className="hero-glass-frame">
+              <img
+                src={homeData.hero_image}
+                alt="Javacafe Premium Partnership"
+                loading="lazy"
+                decoding="async"
+              />
+
+              <div className="floating-card floating-card-top">
+                <span>50+ Active Partners</span>
+              </div>
+
+              <div className="floating-card floating-card-bottom">
+                <span>24/7 Operational Support</span>
+              </div>
+            </div>
+          </div>
 
           <p className="hero-description">
             Sistem kemitraan kopi modern dengan branding premium,
@@ -72,7 +92,7 @@ function Hero() {
           </div>
         </div>
 
-        <div className="hero-right">
+        <div className="hero-right hero-desktop-image">
           <div className="glass-orb orb-1"></div>
           <div className="glass-orb orb-2"></div>
 

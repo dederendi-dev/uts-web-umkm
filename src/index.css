@@ -125,19 +125,7 @@ section {
 }
 
 section::after {
-  content: '';
-  position: absolute;
-  left: 5%;
-  right: 5%;
-  top: 30px;
-  bottom: 30px;
-  border-radius: 48px;
-  background: rgba(255,255,255,.18);
-  backdrop-filter: blur(30px);
-  -webkit-backdrop-filter: blur(30px);
-  pointer-events: none;
-  z-index: -1;
-  opacity: .35;
+  content: none;
 }
 
 img {
