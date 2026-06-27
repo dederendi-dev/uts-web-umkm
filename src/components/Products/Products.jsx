@@ -69,11 +69,13 @@ function Products() {
     <section id="products" className="products">
       <div className="products-container">
         <div className="products-header">
-          <div className="products-badge">
-            ☕ Kemitraan Premium Javacafe
-          </div>
+          <div className="products-header-top">
+            <div className="products-badge">
+              ☕ Kemitraan Premium Javacafe
+            </div>
 
-          <h5>PAKET KEMITRAAN</h5>
+            <h5>PAKET KEMITRAAN</h5>
+          </div>
 
           <h2>
             Bangun Bisnis

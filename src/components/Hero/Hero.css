@@ -29,14 +29,15 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 120px;
+  gap: 72px;
   position: relative;
   z-index: 2;
 }
 
 .hero-left {
-  flex: 0.9;
-  max-width: 480px;
+  flex: 1;
+  max-width: 520px;
+  padding-left: 24px;
 }
 
 .hero-badge {
@@ -51,7 +52,8 @@
   box-shadow:
     inset 0 1px 0 rgba(255,255,255,0.9),
     0 20px 40px rgba(0,0,0,0.06);
-  margin-bottom: 28px;
+  margin-bottom: 22px;
+  transform: translateY(-4px);
 }
 
 .hero-badge span {
@@ -105,14 +107,29 @@
 
 .btn-secondary {
   color: #111827;
-  background: rgba(255,255,255,.55);
-  backdrop-filter: blur(30px);
-  border: 1px solid rgba(255,255,255,.85);
+  background: rgba(255,255,255,.48);
+  backdrop-filter: blur(36px) saturate(180%);
+  -webkit-backdrop-filter: blur(36px) saturate(180%);
+  border: 1px solid rgba(255,255,255,.75);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.75),
+    0 14px 32px rgba(15,23,42,.08);
+  overflow: hidden;
+  position: relative;
+  transition: all .35s ease;
 }
 
-.btn-primary:hover,
+.btn-primary:hover {
+  transform: translateY(-4px);
+}
+
 .btn-secondary:hover {
   transform: translateY(-4px);
+  background: rgba(255,255,255,.62);
+  border-color: rgba(255,255,255,.92);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.9),
+    0 18px 36px rgba(15,23,42,.10);
 }
 
 .hero-right {
@@ -121,6 +138,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  padding-right: 16px;
 }
 
 .hero-mobile-image {
@@ -134,16 +152,16 @@
 .hero-glass-frame {
   position: relative;
   width: 100%;
-  max-width: 760px;
-  padding: 18px;
+  max-width: 700px;
+  padding: 16px;
   border-radius: 42px;
   background: rgba(255,255,255,.35);
   backdrop-filter: blur(40px) saturate(180%);
   -webkit-backdrop-filter: blur(40px) saturate(180%);
-  border: 1px solid rgba(255,255,255,.9);
+  border: 1px solid rgba(255,255,255,.62);
   box-shadow:
-    inset 0 1px 0 rgba(255,255,255,.9),
-    0 40px 120px rgba(0,0,0,.08);
+    inset 0 1px 0 rgba(255,255,255,.72),
+    0 36px 90px rgba(15,23,42,.07);
 }
 
 .hero-glass-frame img {
@@ -161,7 +179,7 @@
 .orb-1 {
   width: 260px;
   height: 260px;
-  background: rgba(255,120,120,.18);
+  background: rgba(255,120,120,.12);
   top: -40px;
   left: 0;
 }
@@ -169,7 +187,7 @@
 .orb-2 {
   width: 300px;
   height: 300px;
-  background: rgba(255,180,120,.18);
+  background: rgba(255,180,120,.12);
   right: 0;
   bottom: -40px;
 }
@@ -188,13 +206,13 @@
 }
 
 .floating-card-top {
-  top: 50px;
-  left: -35px;
+  top: 32px;
+  left: -18px;
 }
 
 .floating-card-bottom {
-  right: -35px;
-  bottom: 50px;
+  right: -18px;
+  bottom: 32px;
 }
 
 @media (max-width: 768px) {
@@ -213,6 +231,7 @@
     order: 1;
     text-align: center;
     max-width: 100%;
+    padding-left: 0;
   }
 
   .hero-right {
@@ -231,25 +250,28 @@
 
   .hero-glass-frame {
     max-width: 100%;
-    padding: 12px;
+    padding: 10px;
     border-radius: 28px;
   }
 
   .hero-glass-frame img {
     border-radius: 20px;
-    max-height: 260px;
+    max-height: 320px;
     object-fit: cover;
   }
 
   .hero-description {
     max-width: 100%;
     margin: 0 auto;
+    font-size: 0.98rem;
+    line-height: 1.8;
+    margin-top: 14px;
   }
 
   .hero-buttons {
     justify-content: center;
     flex-wrap: wrap;
-    gap: 12px;
+    gap: 14px;
   }
 
   .btn-primary,
@@ -257,6 +279,7 @@
     flex: 1;
     justify-content: center;
     text-align: center;
+    padding: 15px 20px;
   }
 
   .hero-title {

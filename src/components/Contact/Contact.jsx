@@ -43,7 +43,7 @@ function Contact() {
 
   return (
     <section id="contact" className="contact">
-      <div className="contact-top">
+      <div className="contact-hero">
         <div className="contact-intro">
           <div className="contact-badge">
             ☕ Contact & Partnership Center
@@ -74,7 +74,9 @@ function Contact() {
             </div>
           </div>
         </div>
+      </div>
 
+      <div className="contact-info-grid">
         <div className="contact-box small-box">
           <h3>📧 Email Kami</h3>
           <p>haznaberkahindonesia@gmail.com</p>
@@ -84,9 +86,7 @@ function Contact() {
           <h3>📱 Telepon Kami</h3>
           <p>0858-7833-7725</p>
         </div>
-      </div>
 
-      <div className="contact-bottom">
         <div className="contact-box address-box">
           <h3>📍 Alamat Kami</h3>
           <p>
@@ -95,7 +95,9 @@ function Contact() {
             Jawa Tengah 53352
           </p>
         </div>
+      </div>
 
+      <div className="contact-map-section">
         <div className="contact-box map-box">
           <h3>🗺️ Lokasi Javacafe</h3>
           <iframe

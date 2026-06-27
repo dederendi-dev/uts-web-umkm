@@ -69,6 +69,17 @@ function About() {
             {aboutData.description}
           </p>
 
+          <div className="about-mobile-image">
+            <div className="about-image">
+              <img
+                src={aboutData.image_url}
+                alt={aboutData.company_name}
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+          </div>
+
           <div className="about-highlights">
             <div className="highlight-card">
               <span className="highlight-number">50+</span>
