@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { supabase } from '../../supabase'
 import Loading from '../Loading/Loading'
 import ErrorState from '../ErrorState/ErrorState'
+import useReveal from '../../hooks/useReveal'
 import './Gallery.css'
 
 function Gallery() {
@@ -12,6 +13,7 @@ function Gallery() {
   const [isExpanded, setIsExpanded] = useState(false)
   const [width, setWidth] = useState(window.innerWidth)
   const navigate = useNavigate()
+  const revealRef = useReveal()
 
   useEffect(() => {
     fetchGallery()
@@ -52,7 +54,7 @@ function Gallery() {
   }
 
   return (
-    <section id="gallery" className="gallery">
+    <section id="gallery" ref={revealRef} className="gallery reveal">
       <div className="gallery-container">
         <div className="gallery-header">
           <div className="gallery-badge">
@@ -73,8 +75,13 @@ function Gallery() {
         </div>
 
         <div className="gallery-grid">
-          {gallery.slice(0, visibleCount).map((item) => (
-            <div className="gallery-item" key={item.id}>
+          {gallery.slice(0, visibleCount).map((item, index) => (
+            <div
+              className="gallery-item"
+              key={item.id}
+              data-stagger
+              style={{ "--delay": index }}
+            >
               <div className="gallery-glow"></div>
               <div className="gallery-image">
                 <img

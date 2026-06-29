@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { supabase } from "../supabase";
 import Loading from "../components/Loading/Loading";
 import ErrorState from "../components/ErrorState/ErrorState";
+import useReveal from "../hooks/useReveal";
 import "./GalleryPage.css";
 
 function GalleryPage() {
@@ -9,6 +10,10 @@ function GalleryPage() {
   const [homeData, setHomeData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
+
+  const heroReveal = useReveal({ immediate: true });
+  const featuredReveal = useReveal();
+  const gridReveal = useReveal();
 
   useEffect(() => {
     fetchGallery();
@@ -56,7 +61,7 @@ function GalleryPage() {
   return (
     <div>
       {/* HERO GALLERY */}
-      <section className="gallery-page-hero">
+      <section ref={heroReveal} className="gallery-page-hero reveal">
         <div className="gallery-page-container">
           <div className="gallery-page-header">
             <h5>OUTLET & BUKTI BISNIS</h5>
@@ -71,7 +76,7 @@ function GalleryPage() {
       </section>
 
       {/* FEATURED GALLERY SECTION */}
-      <section className="gallery-featured">
+      <section ref={featuredReveal} className="gallery-featured reveal">
         <div className="gallery-page-container">
           <div className="gallery-featured-wrapper">
             <div className="gallery-featured-left">
@@ -97,7 +102,7 @@ function GalleryPage() {
       </section>
 
       {/* GALLERY GRID */}
-      <section className="gallery-grid-section">
+      <section ref={gridReveal} className="gallery-grid-section reveal">
         <div className="gallery-page-container">
           <div className="gallery-grid">
             {galleryItems.map((item) => (

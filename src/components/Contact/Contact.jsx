@@ -3,11 +3,13 @@ import { supabase } from '../../supabase'
 import './Contact.css'
 import Loading from '../Loading/Loading'
 import ErrorState from '../ErrorState/ErrorState'
+import useReveal from '../../hooks/useReveal'
 
 function Contact() {
   const [contactData, setContactData] = useState(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(false)
+  const revealRef = useReveal()
 
   useEffect(() => {
     fetchContact()
@@ -42,7 +44,7 @@ function Contact() {
   }
 
   return (
-    <section id="contact" className="contact">
+    <section id="contact" ref={revealRef} className="contact reveal">
       <div className="contact-hero">
         <div className="contact-intro">
           <div className="contact-badge">

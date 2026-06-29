@@ -1,13 +1,16 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { supabase } from "../../supabase";
 import "./Hero.css";
 import Loading from "../Loading/Loading";
 import ErrorState from "../ErrorState/ErrorState";
+import useReveal from "../../hooks/useReveal";
 
 function Hero() {
   const [homeData, setHomeData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
+  const revealRef = useReveal({ immediate: true });
 
   useEffect(() => {
     fetchHomeData();
@@ -42,7 +45,7 @@ function Hero() {
   }
 
   return (
-    <section id="home" className="hero">
+    <section id="home" ref={revealRef} className="hero reveal">
       <div className="hero-container">
 
         <div className="hero-left">
@@ -82,13 +85,13 @@ function Hero() {
           </p>
 
           <div className="hero-buttons">
-            <a href="#products" className="btn-primary">
+            <Link to="/products" className="btn-primary">
               Lihat Paket
-            </a>
+            </Link>
 
-            <a href="#contact" className="btn-secondary">
+            <Link to="/contact" className="btn-secondary">
               Konsultasi
-            </a>
+            </Link>
           </div>
         </div>
 

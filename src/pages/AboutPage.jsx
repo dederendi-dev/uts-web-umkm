@@ -3,11 +3,16 @@ import { supabase } from "../supabase";
 import "./AboutPage.css";
 import Loading from "../components/Loading/Loading";
 import ErrorState from "../components/ErrorState/ErrorState";
+import useReveal from "../hooks/useReveal";
 
 function AboutPage() {
   const [aboutData, setAboutData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
+  const heroReveal = useReveal({ immediate: true });
+  const highlightsReveal = useReveal();
+  const storyReveal = useReveal();
+  const valuesReveal = useReveal();
 
   useEffect(() => {
     fetchAboutData();
@@ -44,7 +49,7 @@ function AboutPage() {
   return (
     <div>
       {/* HERO ABOUT */}
-      <section className="about-page-hero">
+      <section ref={heroReveal} className="about-page-hero reveal">
         <div className="about-page-container">
           <div className="about-page-hero-layout">
             <div className="about-page-hero-visual">
@@ -65,7 +70,7 @@ function AboutPage() {
         </div>
       </section>
 
-      <section className="about-highlights">
+      <section ref={highlightsReveal} className="about-highlights reveal">
         <div className="about-page-container">
           <div className="about-highlight-grid">
             <div className="about-highlight-card">
@@ -89,7 +94,7 @@ function AboutPage() {
       </section>
 
       {/* COMPANY STORY */}
-      <section className="about-story">
+      <section ref={storyReveal} className="about-story reveal">
         <div className="about-page-container">
           <div className="about-story-wrapper">
             <div className="about-story-image-wrap">
@@ -136,7 +141,7 @@ function AboutPage() {
       </section>
 
       {/* WHY CHOOSE US */}
-      <section className="about-values">
+      <section ref={valuesReveal} className="about-values reveal">
         <div className="about-page-container">
           <div className="about-values-shell">
             <div className="about-page-header">

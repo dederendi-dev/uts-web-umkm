@@ -2,12 +2,14 @@ import { useEffect, useState } from "react";
 import { supabase } from "../supabase";
 import Loading from "../components/Loading/Loading";
 import ErrorState from "../components/ErrorState/ErrorState";
+import useReveal from "../hooks/useReveal";
 import "./CareerPage.css";
 
 function CareerPage() {
   const [careerItems, setCareerItems] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
+  const heroReveal = useReveal({ immediate: true });
 
   useEffect(() => {
     fetchCareers();
@@ -42,7 +44,7 @@ function CareerPage() {
   }
 
   return (
-    <section className="career-page">
+    <section ref={heroReveal} className="career-page reveal">
       <div className="career-container">
         <div className="career-header">
           <h5>CAREERS</h5>

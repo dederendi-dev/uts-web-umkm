@@ -4,10 +4,12 @@
 import "./Footer.css";
 import { Link } from "react-router-dom";
 import { FaInstagram, FaFacebookF, FaTiktok } from "react-icons/fa";
+import useReveal from "../../hooks/useReveal";
 
 const Footer = () => {
+  const revealRef = useReveal();
   return (
-    <footer className="footer">
+    <footer ref={revealRef} className="footer reveal">
 
       <div className="footer-container">
 

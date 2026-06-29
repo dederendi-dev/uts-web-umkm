@@ -4,12 +4,14 @@ import { supabase } from '../../supabase'
 import './About.css'
 import Loading from '../Loading/Loading'
 import ErrorState from '../ErrorState/ErrorState'
+import useReveal from '../../hooks/useReveal'
 
 function About() {
   const [aboutData, setAboutData] = useState(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(false)
   const navigate = useNavigate()
+  const revealRef = useReveal()
 
   useEffect(() => {
     fetchAboutData()
@@ -44,7 +46,7 @@ function About() {
   }
 
   return (
-    <section id="about" className="about">
+    <section id="about" ref={revealRef} className="about reveal">
       <div className="about-container">
 
         <div className="about-left">

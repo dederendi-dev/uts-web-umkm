@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { supabase } from '../../supabase'
 import Loading from '../Loading/Loading'
 import ErrorState from '../ErrorState/ErrorState'
+import useReveal from '../../hooks/useReveal'
 import './Products.css'
 
 function Products() {
@@ -15,6 +16,7 @@ function Products() {
   const sliderRef = useRef(null)
 
   const navigate = useNavigate()
+  const revealRef = useReveal()
 
   useEffect(() => {
     fetchProducts()
@@ -66,7 +68,7 @@ function Products() {
   }
 
   return (
-    <section id="products" className="products">
+    <section id="products" ref={revealRef} className="products reveal">
       <div className="products-container">
         <div className="products-header">
           <div className="products-header-top">
@@ -126,8 +128,13 @@ function Products() {
                 transition: 'transform 0.6s ease'
               }}
             >
-              {products.map((item) => (
-                <div className="product-card" key={item.id}>
+              {products.map((item, index) => (
+                <div
+                  className="product-card"
+                  key={item.id}
+                  data-stagger
+                  style={{ "--delay": index }}
+                >
                   <div className="product-glow"></div>
                   <div className="product-image">
                     <img

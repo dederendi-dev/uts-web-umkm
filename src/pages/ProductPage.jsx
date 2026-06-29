@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { supabase } from "../supabase";
 import Loading from "../components/Loading/Loading";
 import ErrorState from "../components/ErrorState/ErrorState";
+import useReveal from "../hooks/useReveal";
 import "./ProductPage.css";
 
 function ProductPage() {
@@ -11,6 +12,10 @@ function ProductPage() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
+  const heroReveal = useReveal({ immediate: true });
+  const featuredReveal = useReveal();
+  const showcaseReveal = useReveal();
+  const ctaReveal = useReveal();
 
   useEffect(() => {
     fetchProducts();
@@ -47,7 +52,7 @@ function ProductPage() {
   return (
     <div>
       {/* HERO SECTION */}
-      <section className="product-page-hero">
+      <section ref={heroReveal} className="product-page-hero reveal">
         <div className="products-container">
           <div className="product-hero-layout">
             <div className="products-header">
@@ -64,7 +69,7 @@ function ProductPage() {
         </div>
       </section>
 
-      <section className="featured-hero-product">
+      <section ref={featuredReveal} className="featured-hero-product reveal">
         <div className="products-container">
           {products.length > 0 && (
             <div className="featured-hero-layout">
@@ -97,7 +102,7 @@ function ProductPage() {
       </section>
 
       {/* PRODUCT SHOWCASE SECTION */}
-      <section className="featured-product">
+      <section ref={showcaseReveal} className="featured-product reveal">
         <div className="products-container">
           <div className="section-heading">
             <span>OUR PRODUCTS</span>
@@ -130,7 +135,7 @@ function ProductPage() {
       </section>
 
       {/* CTA SECTION */}
-      <section className="products-more">
+      <section ref={ctaReveal} className="products-more reveal">
         <div className="products-more-glass">
           <h2>Butuh Informasi Produk Lebih Lengkap?</h2>
           <p>
